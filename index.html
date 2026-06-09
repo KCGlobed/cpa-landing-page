@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="/images/logo.png" sizes="16x16 32x32 48x48" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Cashfree SDK -->
+    <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
 </head>
 
 
@@ -88,22 +90,22 @@
                     Take the 1st Step Toward Your CPA Dream
                 </h2>
 
-                <form>
+                <form id="lead-form">
 
-                    <input type="text" placeholder="Enter your Name">
+                    <input type="text" id="lead-name" placeholder="Enter your Name" required>
 
-                    <input type="email" placeholder="Enter Your Email Address">
+                    <input type="email" id="lead-email" placeholder="Enter Your Email Address" required>
 
-                    <input type="tel" placeholder="Enter Your Mobile Number">
+                    <input type="tel" id="lead-phone" placeholder="Enter Your Mobile Number" required>
 
                     <div class="select-row">
 
-                        <select>
-                            <option>Select State</option>
+                        <select class="select-state" id="lead-state" required>
+                            <option value="">Select State</option>
                         </select>
 
-                        <select>
-                            <option>Select City</option>
+                        <select class="select-city" id="lead-city" required>
+                            <option value="">Select City</option>
                         </select>
 
                     </div>
@@ -741,23 +743,7 @@
 
     </footer>
 
-    <script>
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const navMenu = document.getElementById('nav-menu');
-
-        hamburgerBtn.addEventListener('click', () => {
-            hamburgerBtn.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburgerBtn.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-    </script>
+ <script src="script.js"></script>
 
 </body>
 
