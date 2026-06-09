@@ -1128,3 +1128,224 @@ body {
     text-decoration: none;
     font-size: 13px;
 }
+
+/* ==========================================
+   ADDITIONAL RESPONSIVENESS OVERRIDES
+   ========================================== */
+
+/* Tablet & Mobile (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .hero-container {
+        width: 90%;
+        gap: 50px;
+    }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Navbar styling */
+    .container {
+        justify-content: center;
+        padding: 10px 0;
+        height: auto;
+    }
+    .nav-links {
+        display: none; /* Hide nav links on mobile for cleaner UI */
+    }
+
+    /* Hero section */
+    .hero {
+        padding: 60px 0;
+    }
+    .hero-content h1 {
+        font-size: 32px;
+        text-align: center;
+    }
+    .hero-content h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+    .highlight {
+        font-size: 22px;
+        line-height: 1.3;
+        text-align: center;
+    }
+    .hero-content p {
+        font-size: 14px;
+        line-height: 1.6;
+        text-align: center;
+    }
+    .hero-content img {
+        margin: 20px auto;
+    }
+    .subscribe-btn {
+        display: block;
+        margin: 0 auto;
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+
+    /* Features section wrapping */
+    .features-section {
+        margin-top: 0;
+        padding: 40px 0;
+    }
+    .features-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        width: 95%;
+    }
+
+    /* Why CPA section */
+    .why-cpa h2 {
+        font-size: 2rem;
+        margin-bottom: 50px;
+    }
+    .why-card {
+        min-height: auto;
+        padding-bottom: 20px;
+    }
+
+    /* Career section */
+    .career-section h2 {
+        font-size: 2rem;
+    }
+
+    /* Instructors section */
+    .instructors-header h2 {
+        font-size: 2rem;
+    }
+    .instructors-header p {
+        font-size: 1.1rem;
+    }
+    .instructors-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 20px;
+    }
+    .instructors-grid img {
+        width: 100%;
+        max-width: 370px;
+        height: auto;
+    }
+
+    /* Eligibility section */
+    .eligibility-section {
+        padding: 60px 15px;
+    }
+    .eligibility-container h2 {
+        font-size: 2rem;
+    }
+
+    /* Footer adjustments */
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        width: 90%;
+        text-align: center;
+    }
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-logo {
+        margin: 0 auto 25px;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        width: 90%;
+        margin-top: 40px;
+        text-align: center;
+    }
+    .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* Small Screen Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .hero-container {
+        width: 95%;
+    }
+    .hero-content h1 {
+        font-size: 28px;
+    }
+    .hero-content h2 {
+        font-size: 20px;
+    }
+    .highlight {
+        font-size: 18px;
+    }
+    .hero-form {
+        padding: 25px 15px;
+    }
+    .hero-form h2 {
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+    }
+    .select-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Why CPA cards details */
+    .why-card-description {
+        padding: 0 20px;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+
+    /* Offerings cards */
+    .offerings-card {
+        padding: 25px 15px;
+    }
+
+    /* Exam summary styling */
+    .exam-summary {
+        width: 100%;
+        max-width: 320px;
+        padding: 15px 20px;
+    }
+    .exam-summary h3 {
+        font-size: 18px;
+    }
+    .exam-summary p {
+        font-size: 16px;
+    }
+    .exam-summary small {
+        font-size: 14px;
+    }
+}
+
+/* Very Small Mobile Screens (max-width: 360px) */
+@media (max-width: 360px) {
+    .hero-content h1 {
+        font-size: 24px;
+    }
+    .hero-content h2 {
+        font-size: 18px;
+    }
+    .highlight {
+        font-size: 16px;
+    }
+    .cpa-card {
+        padding: 10px 8px;
+    }
+    .cpa-card-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    .exam-card {
+        padding: 8px;
+    }
+    .card-footer span {
+        font-size: 10px;
+        padding: 8px 4px;
+    }
+}
