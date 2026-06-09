@@ -37,6 +37,27 @@ body {
     object-fit: contain;
 }
 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1010;
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
 .nav-links {
     display: flex;
     list-style: none;
@@ -235,9 +256,11 @@ body {
     position: relative;
     z-index: 100;
 
-    margin-top: -100px; /* Moves circles upward */
+    margin-top: -100px;
+    /* Moves circles upward */
 
-    background: transparent; /* Important */
+    background: transparent;
+    /* Important */
 }
 
 .features-container {
@@ -353,7 +376,7 @@ body {
 .cpa-card-body {
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-areas: 
+    grid-template-areas:
         "left right"
         "footer footer";
     padding: 18px 8px 8px 8px;
@@ -534,6 +557,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        margin: 0 27px;
     }
 
     .cpa-card {
@@ -598,8 +622,8 @@ body {
     /* padding: 110px 25px 40px; */
     position: relative;
     box-shadow:
-        inset 0 2px 8px rgba(0,0,0,0.03),
-        0 2px 10px rgba(0,0,0,0.05);
+        inset 0 2px 8px rgba(0, 0, 0, 0.03),
+        0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .icon-circle {
@@ -706,7 +730,7 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 0px;
-    row-gap: 25px;    
+    row-gap: 25px;
 }
 
 .instructors-grid img {
@@ -1143,41 +1167,111 @@ body {
 
 /* Mobile Devices (max-width: 768px) */
 @media (max-width: 768px) {
+
     /* Navbar styling */
     .container {
-        justify-content: center;
-        padding: 10px 0;
-        height: auto;
+        justify-content: space-between;
+        padding: 0 20px;
+        height: 75px;
+        position: relative;
     }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Hamburger active animation */
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
     .nav-links {
-        display: none; /* Hide nav links on mobile for cleaner UI */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 10px 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        width: 100%;
+    }
+
+    .nav-links li a:hover {
+        background-color: #f1ecf7;
+        color: #86357a;
     }
 
     /* Hero section */
     .hero {
         padding: 60px 0;
     }
+
     .hero-content h1 {
         font-size: 32px;
         text-align: center;
     }
+
     .hero-content h2 {
         font-size: 24px;
         text-align: center;
     }
+
     .highlight {
         font-size: 22px;
         line-height: 1.3;
         text-align: center;
     }
+
     .hero-content p {
         font-size: 14px;
         line-height: 1.6;
         text-align: center;
     }
+
     .hero-content img {
         margin: 20px auto;
     }
+
     .subscribe-btn {
         display: block;
         margin: 0 auto;
@@ -1190,6 +1284,7 @@ body {
         margin-top: 0;
         padding: 40px 0;
     }
+
     .features-container {
         flex-wrap: wrap;
         justify-content: center;
@@ -1202,6 +1297,7 @@ body {
         font-size: 2rem;
         margin-bottom: 50px;
     }
+
     .why-card {
         min-height: auto;
         padding-bottom: 20px;
@@ -1216,14 +1312,17 @@ body {
     .instructors-header h2 {
         font-size: 2rem;
     }
+
     .instructors-header p {
         font-size: 1.1rem;
     }
+
     .instructors-grid {
         grid-template-columns: 1fr;
         justify-items: center;
         gap: 20px;
     }
+
     .instructors-grid img {
         width: 100%;
         max-width: 370px;
@@ -1234,6 +1333,7 @@ body {
     .eligibility-section {
         padding: 60px 15px;
     }
+
     .eligibility-container h2 {
         font-size: 2rem;
     }
@@ -1245,14 +1345,17 @@ body {
         width: 90%;
         text-align: center;
     }
+
     .footer-col {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
     .footer-logo {
         margin: 0 auto 25px;
     }
+
     .footer-bottom {
         flex-direction: column;
         gap: 15px;
@@ -1260,6 +1363,7 @@ body {
         margin-top: 40px;
         text-align: center;
     }
+
     .footer-links {
         justify-content: center;
         flex-wrap: wrap;
@@ -1271,22 +1375,28 @@ body {
     .hero-container {
         width: 95%;
     }
+
     .hero-content h1 {
         font-size: 28px;
     }
+
     .hero-content h2 {
         font-size: 20px;
     }
+
     .highlight {
         font-size: 18px;
     }
+
     .hero-form {
         padding: 25px 15px;
     }
+
     .hero-form h2 {
         font-size: 1.25rem;
         margin-bottom: 20px;
     }
+
     .select-row {
         flex-direction: column;
         gap: 15px;
@@ -1311,12 +1421,15 @@ body {
         max-width: 320px;
         padding: 15px 20px;
     }
+
     .exam-summary h3 {
         font-size: 18px;
     }
+
     .exam-summary p {
         font-size: 16px;
     }
+
     .exam-summary small {
         font-size: 14px;
     }
@@ -1327,23 +1440,29 @@ body {
     .hero-content h1 {
         font-size: 24px;
     }
+
     .hero-content h2 {
         font-size: 18px;
     }
+
     .highlight {
         font-size: 16px;
     }
+
     .cpa-card {
         padding: 10px 8px;
     }
+
     .cpa-card-footer {
         flex-direction: column;
         align-items: center;
         gap: 8px;
     }
+
     .exam-card {
         padding: 8px;
     }
+
     .card-footer span {
         font-size: 10px;
         padding: 8px 4px;
