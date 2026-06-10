@@ -80,7 +80,7 @@ body {
 .hero {
     position: relative;
     min-height: 730px;
-    background: url("https://storage.googleapis.com/static_files_backend/media/landing/Course_bg.75796a56_DOx89LF.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=firebase-adminsdk-tqhn0%40kcglobed-web.iam.gserviceaccount.com%2F20260609%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260609T055528Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=a31b13477ec038cfc5881f71225a60f47c1964fc68ad5a4f818e84c6b4e92de91d1aee93c55ca70908545fad0422a0167d6bcb4a7ab87c18eb5dd40c73120f27766b52b6b4baf6948d1df1af91fdb5159a6ee9494c60b9472c95770bd9292065758c37cfe2a61a5d4897ad053e5df3dbce9bf117dffdfdb1283f3ea589d2e261675d952a76ae6b066f6c5ca24f22d3b75cf7563504ca540c782365de4b8d7fe650bda0bdf6319ec9d583f1d334b0a51bb380a498b09824d0f7f957629d940feda886ed9463bdf5888dce516275c14a52f9395d0a602664e607a9b941d88d26d8483309294f8a54ccf5030ac37008e455f079e86479c7d658356fb8ec91e1caa2");
+    background: url("./images/hero.png");
     background-size: cover;
     background-position: center;
     padding: 80px 0 120px;
