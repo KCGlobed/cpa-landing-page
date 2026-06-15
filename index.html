@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="/images/logo.png" sizes="16x16 32x32 48x48" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Cashfree SDK -->
-    <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+    <!-- Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
 
@@ -739,6 +739,26 @@
         </div>
 
     </footer> -->
+
+    <!-- Custom Loader Overlay -->
+    <div id="custom-loader-overlay" class="custom-overlay">
+        <div class="loader-container">
+            <div class="spinner"></div>
+            <p id="loader-message">Processing your request...</p>
+        </div>
+    </div>
+
+    <!-- Custom Dialog Modal -->
+    <div id="custom-dialog-overlay" class="custom-overlay">
+        <div class="dialog-box">
+            <div class="dialog-icon-container">
+                <div id="dialog-icon" class="dialog-icon"></div>
+            </div>
+            <h3 id="dialog-title">Notification</h3>
+            <p id="dialog-message">Details go here.</p>
+            <button id="dialog-close-btn" class="dialog-btn">Close</button>
+        </div>
+    </div>
 
  <script src="script.js"></script>
 
