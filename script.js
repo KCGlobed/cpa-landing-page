@@ -67,7 +67,7 @@ const API_CONFIG = {
     // The endpoint on your backend to verify order payment status
     CHECK_STATUS_URL: 'https://api.yourdomain.com/payments/check-status',
     // Set to 'sandbox' for testing, or 'production' for live payments
-    CASHFREE_MODE: 'sandbox' 
+    CASHFREE_MODE: 'sandbox'
 };
 
 // Initialize Cashfree SDK
@@ -95,7 +95,7 @@ const handlePaymentVerification = async (orderId) => {
         }
 
         const verificationData = await response.json();
-        
+
         // Show success/failure based on the API response
         if (verificationData.status === 'SUCCESS' || verificationData.payment_status === 'SUCCESS') {
             alert("Payment Successful! Thank you for registering.");
@@ -128,14 +128,84 @@ const checkUrlForPaymentStatus = () => {
 checkUrlForPaymentStatus();
 
 // Handle Form Submission
+// const leadForm = document.getElementById('lead-form');
+// if (leadForm) {
+//     leadForm.addEventListener('submit', async (e) => {
+//         e.preventDefault();
+
+//         const formData = {
+//             name: document.getElementById('lead-name').value,
+//             email: document.getElementById('lead-email').value,
+//             phone: document.getElementById('lead-phone').value,
+//             state: document.getElementById('lead-state').value,
+//             city: document.getElementById('lead-city').value
+//         };
+
+//         const submitButton = leadForm.querySelector('button[type="submit"]');
+//         const originalButtonText = submitButton.textContent;
+//         submitButton.disabled = true;
+//         submitButton.textContent = 'Processing...';
+
+//         try {
+//             const response = await fetch(API_CONFIG.CREATE_ORDER_URL, {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json'
+//                 },
+//                 body: JSON.stringify(formData)
+//             });
+
+//             if (!response.ok) {
+//                 throw new Error(`Failed to create order. Server responded with status: ${response.status}`);
+//             }
+
+//             const data = await response.json();
+
+//             const paymentSessionId = data.payment_session_id || data.paymentSessionId;
+//             const orderId = data.order_id || data.orderId;
+
+//             if (!paymentSessionId) {
+//                 throw new Error("No payment session ID returned from the server.");
+//             }
+
+//             if (!cashfree) {
+//                 throw new Error("Cashfree SDK is not initialized.");
+//             }
+
+//             const checkoutOptions = {
+//                 paymentSessionId: paymentSessionId,
+//                 returnUrl: `${window.location.origin}${window.location.pathname}?order_id={order_id}`,
+//                 redirectTarget: "_self" 
+//             };
+
+//             cashfree.checkout(checkoutOptions).then((result) => {
+//                 if (result.error) {
+//                     console.error("Payment initiation error or user closed modal:", result.error);
+//                     alert(`Payment failed or cancelled: ${result.error.message}`);
+//                 }
+//                 if (result.redirect) {
+//                     console.log("Redirecting user to Cashfree payment page...");
+//                 }
+//             });
+
+//         } catch (error) {
+//             console.error("Checkout integration error:", error);
+//             alert(`Error: ${error.message || 'Something went wrong. Please try again.'}`);
+//         } finally {
+//             submitButton.disabled = false;
+//             submitButton.textContent = originalButtonText;
+//         }
+//     });
+// }
+
 const leadForm = document.getElementById('lead-form');
+
 if (leadForm) {
     leadForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Collect Form Data
         const formData = {
-            name: document.getElementById('lead-name').value,
+            full_name: document.getElementById('lead-name').value,
             email: document.getElementById('lead-email').value,
             phone: document.getElementById('lead-phone').value,
             state: document.getElementById('lead-state').value,
@@ -144,58 +214,43 @@ if (leadForm) {
 
         const submitButton = leadForm.querySelector('button[type="submit"]');
         const originalButtonText = submitButton.textContent;
+
         submitButton.disabled = true;
-        submitButton.textContent = 'Processing...';
+        submitButton.textContent = 'Submitting...';
 
         try {
-            // Send Lead Form data to your backend API to create an order
-            const response = await fetch(API_CONFIG.CREATE_ORDER_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            if (!response.ok) {
-                throw new Error(`Failed to create order. Server responded with status: ${response.status}`);
-            }
+            const response = await fetch(
+                'https://cpa-prod-738131651355.asia-south1.run.app/api/careers/create_cpa_career_form/',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                }
+            );
 
             const data = await response.json();
-            
-            // Extract the payment session ID and order ID.
-            const paymentSessionId = data.payment_session_id || data.paymentSessionId;
-            const orderId = data.order_id || data.orderId;
 
-            if (!paymentSessionId) {
-                throw new Error("No payment session ID returned from the server.");
+            if (!response.ok) {
+                throw new Error(
+                    data.message || 'Failed to submit form'
+                );
             }
 
-            if (!cashfree) {
-                throw new Error("Cashfree SDK is not initialized.");
-            }
+            console.log('CPA Form Created:', data);
 
-            // Trigger Cashfree checkout flow
-            const checkoutOptions = {
-                paymentSessionId: paymentSessionId,
-                // Cashfree will replace {order_id} with the actual order ID in the redirect query param
-                returnUrl: `${window.location.origin}${window.location.pathname}?order_id={order_id}`,
-                redirectTarget: "_self" // Use "_self", "_blank", or "_modal" (for popup/iframe checkout if allowed)
-            };
-            
-            cashfree.checkout(checkoutOptions).then((result) => {
-                if (result.error) {
-                    console.error("Payment initiation error or user closed modal:", result.error);
-                    alert(`Payment failed or cancelled: ${result.error.message}`);
-                }
-                if (result.redirect) {
-                    console.log("Redirecting user to Cashfree payment page...");
-                }
-            });
+            leadForm.reset();
+
+            document.querySelector('.select-city').innerHTML =
+                '<option value="">Select City</option>';
 
         } catch (error) {
-            console.error("Checkout integration error:", error);
-            alert(`Error: ${error.message || 'Something went wrong. Please try again.'}`);
+            console.error('Form submission error:', error);
+            alert(
+                error.message ||
+                'Something went wrong. Please try again.'
+            );
         } finally {
             submitButton.disabled = false;
             submitButton.textContent = originalButtonText;
