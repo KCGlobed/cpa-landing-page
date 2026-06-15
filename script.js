@@ -238,8 +238,6 @@ if (leadForm) {
                 );
             }
 
-            console.log('CPA Form Created:', data);
-
             leadForm.reset();
 
             document.querySelector('.select-city').innerHTML =
