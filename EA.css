@@ -842,7 +842,7 @@ body {
     padding: 14px;
     border-radius: 30px;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 700;
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
@@ -911,7 +911,7 @@ body {
 }
 
 .hightlight {
-    color: #030303;
+    color: #374151;
     font-weight: 700;
 }
 
