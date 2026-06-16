@@ -24,8 +24,8 @@
             <!-- Logo -->
             <div class="logo">
                 <a href="/">
-                <img src="images/logo_kcglobed.svg" alt="KC GlobEd Logo">
-            </a>
+                    <img src="images/logo_kcglobed.svg" alt="KC GlobEd Logo">
+                </a>
             </div>
 
         </div>
@@ -81,7 +81,9 @@
 
                     <input type="email" id="lead-email" placeholder="Enter Your Email Address" required>
 
-                    <input type="tel" id="lead-phone" placeholder="Enter Your Mobile Number" required>
+                    <input type="text" id="lead-phone" placeholder="Enter Your Mobile Number" maxlength="10"
+                        pattern="[0-9]{10}" inputmode="numeric"
+                        oninput="this.value = this.value.replace(/\D/g, '').slice(0,10)" required>
 
                     <div class="select-row">
 
@@ -239,8 +241,7 @@
 
             <div class="why-card">
                 <div class="icon-circle">
-                    <img src="./images/cap_1.svg"
-                        alt="">
+                    <img src="./images/cap_1.svg" alt="">
                 </div>
                 <div class="why-card-description">
                     <h3>Global Recognition</h3>
@@ -254,8 +255,7 @@
 
             <div class="why-card">
                 <div class="icon-circle">
-                    <img src="./images/cap_2.svg"
-                        alt="">
+                    <img src="./images/cap_2.svg" alt="">
                 </div>
                 <div class="why-card-description">
                     <h3>High Demand High Growth</h3>
@@ -267,8 +267,7 @@
 
             <div class="why-card">
                 <div class="icon-circle">
-                    <img src="./images/cap_3.svg"
-                        alt="">
+                    <img src="./images/cap_3.svg" alt="">
                 </div>
                 <div class="why-card-description">
                     <h3>Black Belt in Accounting</h3>
@@ -282,8 +281,7 @@
 
             <div class="why-card">
                 <div class="icon-circle">
-                    <img src="./images/cap_4.svg"
-                        alt="">
+                    <img src="./images/cap_4.svg" alt="">
                 </div>
                 <div class="why-card-description">
                     <h3>International Mobility</h3>
@@ -305,8 +303,7 @@
         </h2>
 
         <div class="career-image">
-            <img src="./images/career_path.png"
-                alt="Career Path of CPA">
+            <img src="./images/career_path.png" alt="Career Path of CPA">
         </div>
 
     </section>
@@ -764,7 +761,7 @@
         </div>
     </div>
 
- <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
