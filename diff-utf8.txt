@@ -1,0 +1,1465 @@
+﻿diff --git a/Home.html b/Home.html
+index a3535c8..b89c0df 100644
+--- a/Home.html
++++ b/Home.html
+@@ -182,6 +182,44 @@
+         }
+     </style>
+     <link rel="stylesheet" href="kcglobed-home.css">
++    <style>
++        .testimonial-slider-container {
++            width: 100%;
++            overflow: hidden;
++            position: relative;
++        }
++        .testimonial-slider-track {
++            display: flex;
++            gap: 16px;
++            transition: transform 0.5s ease-in-out;
++            width: 100%;
++        }
++        /* Desktop/Large screen: 3 cards */
++        .testimonial-slider-track .testiSlider {
++            flex: 0 0 calc(33.333% - 11px);
++            width: calc(33.333% - 11px);
++        }
++        /* Tablet/Medium screen: 2 cards */
++        @media (max-width: 1024px) and (min-width: 640px) {
++            .testimonial-slider-track .testiSlider {
++                flex: 0 0 calc(50% - 8px);
++                width: calc(50% - 8px);
++            }
++        }
++        /* Mobile/Small screen: 1 card */
++        @media (max-width: 640px) {
++            .testimonial-slider-track .testiSlider {
++                flex: 0 0 100%;
++                width: 100%;
++            }
++        }
++        .tab-content.hidden {
++            display: none !important;
++        }
++        .slider-dot {
++            transition: all 0.3s ease;
++        }
++    </style>
+ </head>
+ 
+ <body class="__variable_f367f3 font-sans antialiased">
+@@ -703,8 +741,7 @@
+                                                         decoding="async" data-nimg="1"
+                                                         class="w-[85%] lg:w-[60%] h-10 object-scale-down"
+                                                         style="color:transparent"
+-                                                        srcset="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp37.8debf8c6.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D28b9c9a86072b970d4fe687a6737365f1792ca38549a65ed81ef21c10cde26a520a845d42e6c933a82bcd110d57b865a14d303dd35576277f375a2de397ab16763baf99ee75e7da7369e96bd18cba7166e0623d7750b68f9e59b36d106ca0caa55339c36ba962886de95a59245ff65d7b30043ce8af604601685ef3bdf3870861539baf41cb3d27ddca1035520d9f4ad399c5927e07c2f8fb8731dab1b6d9c8a13276bdc5414fa812722345ba671358c886b9fb2cdc5bdaa308ed65f45dcc0f9a2daca0b6e1858b26ab6e1e4e6196f1ff26caa9d5698d0a1ee7bac961d15488d19e61700a84ff0fd70dfe5961c6616062e45196659a3861913a4ded525980a71&amp;w=128&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp37.8debf8c6.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D28b9c9a86072b970d4fe687a6737365f1792ca38549a65ed81ef21c10cde26a520a845d42e6c933a82bcd110d57b865a14d303dd35576277f375a2de397ab16763baf99ee75e7da7369e96bd18cba7166e0623d7750b68f9e59b36d106ca0caa55339c36ba962886de95a59245ff65d7b30043ce8af604601685ef3bdf3870861539baf41cb3d27ddca1035520d9f4ad399c5927e07c2f8fb8731dab1b6d9c8a13276bdc5414fa812722345ba671358c886b9fb2cdc5bdaa308ed65f45dcc0f9a2daca0b6e1858b26ab6e1e4e6196f1ff26caa9d5698d0a1ee7bac961d15488d19e61700a84ff0fd70dfe5961c6616062e45196659a3861913a4ded525980a71&amp;w=256&amp;q=75 2x"
+-                                                        src="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp37.8debf8c6.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D28b9c9a86072b970d4fe687a6737365f1792ca38549a65ed81ef21c10cde26a520a845d42e6c933a82bcd110d57b865a14d303dd35576277f375a2de397ab16763baf99ee75e7da7369e96bd18cba7166e0623d7750b68f9e59b36d106ca0caa55339c36ba962886de95a59245ff65d7b30043ce8af604601685ef3bdf3870861539baf41cb3d27ddca1035520d9f4ad399c5927e07c2f8fb8731dab1b6d9c8a13276bdc5414fa812722345ba671358c886b9fb2cdc5bdaa308ed65f45dcc0f9a2daca0b6e1858b26ab6e1e4e6196f1ff26caa9d5698d0a1ee7bac961d15488d19e61700a84ff0fd70dfe5961c6616062e45196659a3861913a4ded525980a71&amp;w=256&amp;q=75">
++                                                        src="./images/home_assests/uniqus.webp">
+                                                 </div>
+                                             </div>
+                                             <div tabindex="0">
+@@ -713,8 +750,8 @@
+                                                         decoding="async" data-nimg="1"
+                                                         class="w-[85%] lg:w-[60%] h-10 object-scale-down"
+                                                         style="color:transparent"
+-                                                        srcset="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp36.10fe870a.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D5ffc677ba75a351c100f1244f1eb260bc344f0b8d807cefd704216f0d17437049fce2ae22ab24651c32210683799fdc5e11d24f0dc73831aefd8c78fbea8bf68b0f8afdc40a6bd3d4b01273ad3669e917f39b9fe24b50a299d6c8f924e28b143fc2a21f8ac335fedc3bf53179d07c674c42517404a3097ad9529f90b473beb96639828cc3491d41cacb9c72928cf0e0d575ab514b6474949f32938ad382723c971a606c7bf8dcd7b9577536cddde11550c9c9991ba778ff0eaad10fbded0499ef25a88462d5ba6887be7b0d5ba3dc830d3441cf0e56b3499990fbf1fb7288a6d14f4e3ccf590050a3005a2f1f1ff64b56abfbff36f0611dbf2b41a4a3ed126f3&amp;w=128&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp36.10fe870a.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D5ffc677ba75a351c100f1244f1eb260bc344f0b8d807cefd704216f0d17437049fce2ae22ab24651c32210683799fdc5e11d24f0dc73831aefd8c78fbea8bf68b0f8afdc40a6bd3d4b01273ad3669e917f39b9fe24b50a299d6c8f924e28b143fc2a21f8ac335fedc3bf53179d07c674c42517404a3097ad9529f90b473beb96639828cc3491d41cacb9c72928cf0e0d575ab514b6474949f32938ad382723c971a606c7bf8dcd7b9577536cddde11550c9c9991ba778ff0eaad10fbded0499ef25a88462d5ba6887be7b0d5ba3dc830d3441cf0e56b3499990fbf1fb7288a6d14f4e3ccf590050a3005a2f1f1ff64b56abfbff36f0611dbf2b41a4a3ed126f3&amp;w=256&amp;q=75 2x"
+-                                                        src="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp36.10fe870a.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D5ffc677ba75a351c100f1244f1eb260bc344f0b8d807cefd704216f0d17437049fce2ae22ab24651c32210683799fdc5e11d24f0dc73831aefd8c78fbea8bf68b0f8afdc40a6bd3d4b01273ad3669e917f39b9fe24b50a299d6c8f924e28b143fc2a21f8ac335fedc3bf53179d07c674c42517404a3097ad9529f90b473beb96639828cc3491d41cacb9c72928cf0e0d575ab514b6474949f32938ad382723c971a606c7bf8dcd7b9577536cddde11550c9c9991ba778ff0eaad10fbded0499ef25a88462d5ba6887be7b0d5ba3dc830d3441cf0e56b3499990fbf1fb7288a6d14f4e3ccf590050a3005a2f1f1ff64b56abfbff36f0611dbf2b41a4a3ed126f3&amp;w=256&amp;q=75">
++                                                        src="./images/home_assests/square.webp"
++                                                        >
+                                                 </div>
+                                             </div>
+                                             <div tabindex="0">
+@@ -723,8 +760,8 @@
+                                                         decoding="async" data-nimg="1"
+                                                         class="w-[85%] lg:w-[60%] h-10 object-scale-down"
+                                                         style="color:transparent"
+-                                                        srcset="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp35.e73be14a.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D51be04a93e2612bce40188d30fbdf4bdccfd40548e3871760abe01a005014023aa5fe658dfb40e2ce2086228e366aa0a78b25f5b390abaaae2ff343e4c827b05576bd796fde97b1615081287a20b02021f0f0492a299413f7e9c37ab1efb4dca0c1fc0e7f10afdef2c5ce4ad24c510cd428e522560ff955d5ee0367f247f775c019b59f29465e727a0e15fbb99127ef288220d04c0efea3121e78c92599d0243e851939b6e0f78c97b9f902ba6e0b60ddc41544f6d8f817a9bef80202d4de409a4b9b2596aaa0331947a636fa3fa83291c4da82d0e020cfcdd180b409776b7d0f3944d88e483c403f94a7ac79a427bb07a0642c7332de50f1e689ede33349f7f&amp;w=128&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp35.e73be14a.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D51be04a93e2612bce40188d30fbdf4bdccfd40548e3871760abe01a005014023aa5fe658dfb40e2ce2086228e366aa0a78b25f5b390abaaae2ff343e4c827b05576bd796fde97b1615081287a20b02021f0f0492a299413f7e9c37ab1efb4dca0c1fc0e7f10afdef2c5ce4ad24c510cd428e522560ff955d5ee0367f247f775c019b59f29465e727a0e15fbb99127ef288220d04c0efea3121e78c92599d0243e851939b6e0f78c97b9f902ba6e0b60ddc41544f6d8f817a9bef80202d4de409a4b9b2596aaa0331947a636fa3fa83291c4da82d0e020cfcdd180b409776b7d0f3944d88e483c403f94a7ac79a427bb07a0642c7332de50f1e689ede33349f7f&amp;w=256&amp;q=75 2x"
+-                                                        src="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp35.e73be14a.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D51be04a93e2612bce40188d30fbdf4bdccfd40548e3871760abe01a005014023aa5fe658dfb40e2ce2086228e366aa0a78b25f5b390abaaae2ff343e4c827b05576bd796fde97b1615081287a20b02021f0f0492a299413f7e9c37ab1efb4dca0c1fc0e7f10afdef2c5ce4ad24c510cd428e522560ff955d5ee0367f247f775c019b59f29465e727a0e15fbb99127ef288220d04c0efea3121e78c92599d0243e851939b6e0f78c97b9f902ba6e0b60ddc41544f6d8f817a9bef80202d4de409a4b9b2596aaa0331947a636fa3fa83291c4da82d0e020cfcdd180b409776b7d0f3944d88e483c403f94a7ac79a427bb07a0642c7332de50f1e689ede33349f7f&amp;w=256&amp;q=75">
++                                                        src="./images/home_assests/mothersone.webp"
++                                                        >
+                                                 </div>
+                                             </div>
+                                             <div tabindex="0">
+@@ -733,8 +770,7 @@
+                                                         decoding="async" data-nimg="1"
+                                                         class="w-[85%] lg:w-[60%] h-10 object-scale-down"
+                                                         style="color:transparent"
+-                                                        srcset="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp34.4185b693.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D685bb201a07e3fcc0f532ea04fe7c1a60c61cad63f5c82506af10b53699981f358e527080d83c58d06043bedd6462251353c2092326088148a0de258d2cfff850b60709a304c9b07cce920b2907c6ac1300e2fb9a3f238378c98f6bb567ffec8bb415327be28af7f930c2e7d669e4ece29caabf2c8f62de74330bcd37dd3343659103a43a92037f6aaa83cc693977ad9c0ea3622a9682394b41024cf797d55c7b5dac769ab7ae6665ba6b6b251a9cf15c8d6172b8f78c712492af5eeadba97e6db171bab0d1957f31957631c8b8c53e6e727734e7ac8ccdd243268fb34d65738b5848f45ad62eaa10b46033eb03e5b63842b603981d182e31e5a8c87b0be60a8&amp;w=128&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp34.4185b693.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D685bb201a07e3fcc0f532ea04fe7c1a60c61cad63f5c82506af10b53699981f358e527080d83c58d06043bedd6462251353c2092326088148a0de258d2cfff850b60709a304c9b07cce920b2907c6ac1300e2fb9a3f238378c98f6bb567ffec8bb415327be28af7f930c2e7d669e4ece29caabf2c8f62de74330bcd37dd3343659103a43a92037f6aaa83cc693977ad9c0ea3622a9682394b41024cf797d55c7b5dac769ab7ae6665ba6b6b251a9cf15c8d6172b8f78c712492af5eeadba97e6db171bab0d1957f31957631c8b8c53e6e727734e7ac8ccdd243268fb34d65738b5848f45ad62eaa10b46033eb03e5b63842b603981d182e31e5a8c87b0be60a8&amp;w=256&amp;q=75 2x"
+-                                                        src="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp34.4185b693.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D685bb201a07e3fcc0f532ea04fe7c1a60c61cad63f5c82506af10b53699981f358e527080d83c58d06043bedd6462251353c2092326088148a0de258d2cfff850b60709a304c9b07cce920b2907c6ac1300e2fb9a3f238378c98f6bb567ffec8bb415327be28af7f930c2e7d669e4ece29caabf2c8f62de74330bcd37dd3343659103a43a92037f6aaa83cc693977ad9c0ea3622a9682394b41024cf797d55c7b5dac769ab7ae6665ba6b6b251a9cf15c8d6172b8f78c712492af5eeadba97e6db171bab0d1957f31957631c8b8c53e6e727734e7ac8ccdd243268fb34d65738b5848f45ad62eaa10b46033eb03e5b63842b603981d182e31e5a8c87b0be60a8&amp;w=256&amp;q=75">
++                                                        src="./images/home_assests/gallaghar.webp">
+                                                 </div>
+                                             </div>
+                                             <div tabindex="0">
+@@ -743,8 +779,8 @@
+                                                         decoding="async" data-nimg="1"
+                                                         class="w-[85%] lg:w-[60%] h-10 object-scale-down"
+                                                         style="color:transparent"
+-                                                        srcset="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp33.14188051.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D08cee64ff2520c5c28b2396d4276b9b3dd54ca8ea5666060ed76942628cad8af9e958ef8b82a5d5c6693b9568da6ff939b766d97403f0ef889d91357e903b502995aac5253ae205b79fd7de4bcd31c081c3cd69fedfd34cc0ea49ab0a9e0f7ce5627bc6a46a23681b0ba44538dec2e0db203925510094d156405e87222ff5aa0f44b49c3cae872fe920045d8ba14519cd1096007798bb940c2a3a2b8bf589e3d58395a8ab6ffe5f81a663d788d24e88b88e29042bbae315de005c347fb50d4ef87545d24aa646012d6ad134d7728fc8902dccffeaf99672b4d7b3995ff93a8ec72cde8647024bf16042ee40173dc676ebeac19d26cb73600edfa4f9cd07d41bc&amp;w=128&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp33.14188051.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D08cee64ff2520c5c28b2396d4276b9b3dd54ca8ea5666060ed76942628cad8af9e958ef8b82a5d5c6693b9568da6ff939b766d97403f0ef889d91357e903b502995aac5253ae205b79fd7de4bcd31c081c3cd69fedfd34cc0ea49ab0a9e0f7ce5627bc6a46a23681b0ba44538dec2e0db203925510094d156405e87222ff5aa0f44b49c3cae872fe920045d8ba14519cd1096007798bb940c2a3a2b8bf589e3d58395a8ab6ffe5f81a663d788d24e88b88e29042bbae315de005c347fb50d4ef87545d24aa646012d6ad134d7728fc8902dccffeaf99672b4d7b3995ff93a8ec72cde8647024bf16042ee40173dc676ebeac19d26cb73600edfa4f9cd07d41bc&amp;w=256&amp;q=75 2x"
+-                                                        src="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp33.14188051.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D08cee64ff2520c5c28b2396d4276b9b3dd54ca8ea5666060ed76942628cad8af9e958ef8b82a5d5c6693b9568da6ff939b766d97403f0ef889d91357e903b502995aac5253ae205b79fd7de4bcd31c081c3cd69fedfd34cc0ea49ab0a9e0f7ce5627bc6a46a23681b0ba44538dec2e0db203925510094d156405e87222ff5aa0f44b49c3cae872fe920045d8ba14519cd1096007798bb940c2a3a2b8bf589e3d58395a8ab6ffe5f81a663d788d24e88b88e29042bbae315de005c347fb50d4ef87545d24aa646012d6ad134d7728fc8902dccffeaf99672b4d7b3995ff93a8ec72cde8647024bf16042ee40173dc676ebeac19d26cb73600edfa4f9cd07d41bc&amp;w=256&amp;q=75">
++                                                        src="./images/home_assests/square.webp"
++                                                        >
+                                                 </div>
+                                             </div>
+                                             <div tabindex="0">
+@@ -753,8 +789,7 @@
+                                                         decoding="async" data-nimg="1"
+                                                         class="w-[85%] lg:w-[60%] h-10 object-scale-down"
+                                                         style="color:transparent"
+-                                                        srcset="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp32.c3b0c684.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D59e839c60db4ae669410301e3af2b8984c4e45c536f466bb6c6420a9968ad6f56981d8dee0672dae886da6edafa5cc1c66b18b54e90c94d47bd21db6013d7f18e06e4366740d52cc3617fb848a67a1204a14da5d75c39689cb80b0c2735d5dd77397dccd9371573f27ecefe08a7adff809c84cf0c6d1dfc7b813aa55edfba7dace658055462d591dc03b6427a55c1479ee2ddbdf17c96829f305bfad4c3795e08b78e02dbc61fde6fc4923c8f2fc8fd912d33f21aea0b8d18d5b47dc513cba7b9c0dd28379410f9e0969964a99d406512b402d6478a2ad3fe11d93d2def879e53631b798118c447ece4a316e71c543ee7aa0b05b6255d9a82481c6b0770e2837&amp;w=128&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp32.c3b0c684.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D59e839c60db4ae669410301e3af2b8984c4e45c536f466bb6c6420a9968ad6f56981d8dee0672dae886da6edafa5cc1c66b18b54e90c94d47bd21db6013d7f18e06e4366740d52cc3617fb848a67a1204a14da5d75c39689cb80b0c2735d5dd77397dccd9371573f27ecefe08a7adff809c84cf0c6d1dfc7b813aa55edfba7dace658055462d591dc03b6427a55c1479ee2ddbdf17c96829f305bfad4c3795e08b78e02dbc61fde6fc4923c8f2fc8fd912d33f21aea0b8d18d5b47dc513cba7b9c0dd28379410f9e0969964a99d406512b402d6478a2ad3fe11d93d2def879e53631b798118c447ece4a316e71c543ee7aa0b05b6255d9a82481c6b0770e2837&amp;w=256&amp;q=75 2x"
+-                                                        src="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp32.c3b0c684.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D59e839c60db4ae669410301e3af2b8984c4e45c536f466bb6c6420a9968ad6f56981d8dee0672dae886da6edafa5cc1c66b18b54e90c94d47bd21db6013d7f18e06e4366740d52cc3617fb848a67a1204a14da5d75c39689cb80b0c2735d5dd77397dccd9371573f27ecefe08a7adff809c84cf0c6d1dfc7b813aa55edfba7dace658055462d591dc03b6427a55c1479ee2ddbdf17c96829f305bfad4c3795e08b78e02dbc61fde6fc4923c8f2fc8fd912d33f21aea0b8d18d5b47dc513cba7b9c0dd28379410f9e0969964a99d406512b402d6478a2ad3fe11d93d2def879e53631b798118c447ece4a316e71c543ee7aa0b05b6255d9a82481c6b0770e2837&amp;w=256&amp;q=75">
++                                                        src="./images/home_assests/baker.webp">
+                                                 </div>
+                                             </div>
+                                             <div tabindex="0">
+@@ -762,8 +797,7 @@
+                                                         loading="lazy" width="120" height="60" decoding="async"
+                                                         data-nimg="1" class="w-[85%] lg:w-[60%] h-10 object-scale-down"
+                                                         style="color:transparent"
+-                                                        srcset="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp31.a1b6f887.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D5d18c160ef10d56b058a0a09d3a62b5ec1cf69ffc40a7f508d0ba85a9c66d52016860f021c1f0a4202a4f5faaca793fb870a1ba5ed8e284ee251d7b67fed8cb9a9275cd4c84a8323837e66307478279b581dbe20633fe73b58d530f3e2798b6473d12dabc169e0c6172f5b8e3bdf914a1bd9a291d3079331a3c7a73016ea3921419027ccaf8c71b2e41785f30381ae6e058f15c617b0e60ff568de6a3d874cf07fd404086ec200447beadd696abb6483c83ffa872dc3168fb7b2c29ff50b62bf7f15c96cb6b4fb524af26330d5f3324b73c6deccf2684426164c5337f7ee18b5a6032af2e2e9b1565ac66924d963d586409ae30196190975fc0e2283a61ef179&amp;w=128&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp31.a1b6f887.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D5d18c160ef10d56b058a0a09d3a62b5ec1cf69ffc40a7f508d0ba85a9c66d52016860f021c1f0a4202a4f5faaca793fb870a1ba5ed8e284ee251d7b67fed8cb9a9275cd4c84a8323837e66307478279b581dbe20633fe73b58d530f3e2798b6473d12dabc169e0c6172f5b8e3bdf914a1bd9a291d3079331a3c7a73016ea3921419027ccaf8c71b2e41785f30381ae6e058f15c617b0e60ff568de6a3d874cf07fd404086ec200447beadd696abb6483c83ffa872dc3168fb7b2c29ff50b62bf7f15c96cb6b4fb524af26330d5f3324b73c6deccf2684426164c5337f7ee18b5a6032af2e2e9b1565ac66924d963d586409ae30196190975fc0e2283a61ef179&amp;w=256&amp;q=75 2x"
+-                                                        src="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fpp31.a1b6f887.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D5d18c160ef10d56b058a0a09d3a62b5ec1cf69ffc40a7f508d0ba85a9c66d52016860f021c1f0a4202a4f5faaca793fb870a1ba5ed8e284ee251d7b67fed8cb9a9275cd4c84a8323837e66307478279b581dbe20633fe73b58d530f3e2798b6473d12dabc169e0c6172f5b8e3bdf914a1bd9a291d3079331a3c7a73016ea3921419027ccaf8c71b2e41785f30381ae6e058f15c617b0e60ff568de6a3d874cf07fd404086ec200447beadd696abb6483c83ffa872dc3168fb7b2c29ff50b62bf7f15c96cb6b4fb524af26330d5f3324b73c6deccf2684426164c5337f7ee18b5a6032af2e2e9b1565ac66924d963d586409ae30196190975fc0e2283a61ef179&amp;w=256&amp;q=75">
++                                                        src="./images/home_assests/asa.webp">
+                                                 </div>
+                                             </div>
+                                             <div tabindex="0">
+@@ -771,8 +805,7 @@
+                                                         loading="lazy" width="120" height="60" decoding="async"
+                                                         data-nimg="1" class="w-[85%] lg:w-[60%] h-10 object-scale-down"
+                                                         style="color:transparent"
+-                                                        srcset="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fdownload_RxbXtaJ.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D05efe2ad002bd9a755a0215c47f25fc559d76b7fcf648790ccd1ccce6d55658edfd36a1115863b37b9c1ebdc27a848cbdde0f14a83705bcf86b7ca0b2d7593d92cc0737edd5f7e4364577e1fe2fadb4c8c4c14a2d3d94006a7d72da1048d28d168d71e2a7558bdf5bd555b69983eba44bd3fc8c42d46b3eb01f06fb8ea9274cd5e01e3666c93ae3f72d56468c4360511e6ca45e004ef0583db79d6dc432a5cd31905c2dfa4cc93f8face380c65490e543c62af5ec670ece33bebca599ee27c85366aa52602a2583d0ee0a584d8c242b8e7321e4649a1399fdf81265bc58bed919ca10187ff06685982a7f226db6e612467277ce0259f081d2d927ca0a1427851&amp;w=128&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fdownload_RxbXtaJ.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D05efe2ad002bd9a755a0215c47f25fc559d76b7fcf648790ccd1ccce6d55658edfd36a1115863b37b9c1ebdc27a848cbdde0f14a83705bcf86b7ca0b2d7593d92cc0737edd5f7e4364577e1fe2fadb4c8c4c14a2d3d94006a7d72da1048d28d168d71e2a7558bdf5bd555b69983eba44bd3fc8c42d46b3eb01f06fb8ea9274cd5e01e3666c93ae3f72d56468c4360511e6ca45e004ef0583db79d6dc432a5cd31905c2dfa4cc93f8face380c65490e543c62af5ec670ece33bebca599ee27c85366aa52602a2583d0ee0a584d8c242b8e7321e4649a1399fdf81265bc58bed919ca10187ff06685982a7f226db6e612467277ce0259f081d2d927ca0a1427851&amp;w=256&amp;q=75 2x"
+-                                                        src="/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic_files_backend%2Fmedia%2Flanding%2Fdownload_RxbXtaJ.png%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dfirebase-adminsdk-tqhn0%2540kcglobed-web.iam.gserviceaccount.com%252F20260616%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20260616T052458Z%26X-Goog-Expires%3D86400%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D05efe2ad002bd9a755a0215c47f25fc559d76b7fcf648790ccd1ccce6d55658edfd36a1115863b37b9c1ebdc27a848cbdde0f14a83705bcf86b7ca0b2d7593d92cc0737edd5f7e4364577e1fe2fadb4c8c4c14a2d3d94006a7d72da1048d28d168d71e2a7558bdf5bd555b69983eba44bd3fc8c42d46b3eb01f06fb8ea9274cd5e01e3666c93ae3f72d56468c4360511e6ca45e004ef0583db79d6dc432a5cd31905c2dfa4cc93f8face380c65490e543c62af5ec670ece33bebca599ee27c85366aa52602a2583d0ee0a584d8c242b8e7321e4649a1399fdf81265bc58bed919ca10187ff06685982a7f226db6e612467277ce0259f081d2d927ca0a1427851&amp;w=256&amp;q=75">
++                                                        src="./images/home_assests/tpnc.webp">
+                                                 </div>
+                                             </div>
+                                             <div tabindex="0">
+@@ -956,7 +989,7 @@
+                                                 class="font-semibold text-xl md:text-2xl mb-4 flex flex-row flex-wrap gap-1">
+                                                 <span>Premier</span><span class="text-gray-400">Instructors</span>
+                                             </p>
+-                                            <p class="text-md font-regular max-w-md font-light">Our handpicked industry
++                                            <p class="text-md max-w-md">Our handpicked industry
+                                                 experts infuse their knowledge and enthusiasm into every topic, ensuring
+                                                 you not only excel but also thrive in your chosen field.</p>
+                                         </div>
+@@ -1093,7 +1126,8 @@
+                         <div class="flex items-center justify-start lg:flex hidden"><img
+                                 src="images/purple_squre_dots.svg" alt="" class="absolute h-16 mb-[10rem] mr-[2rem]" />
+                         </div>
+-                        <div class="my-10 lg:my-0 m-auto max-w-6xl lg:h-[35rem] xl:h-[40rem] grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-0 items-center justify-center align-center">
++                        <div
++                            class="my-10 lg:my-0 m-auto max-w-6xl lg:h-[35rem] xl:h-[40rem] grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-0 items-center justify-center align-center">
+                             <div class="relative overflow-hidden" style="width:fit-content">
+                                 <div style="transform:translateY(75px)">
+                                     <div
+@@ -1447,196 +1481,672 @@
+                                 <div class="relative overflow-hidden">
+                                     <div class="xl:max-w-[85rem] max-w-[26rem] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                                         <div class="max-w-3xl text-center mx-auto">
+-                                            <h2
+-                                                class="block text-2xl font-bold font-md text-[#583E15] sm:text-4xl md:text-5xl ">
+-                                                Voices You Shouldn't<span class="text-primary_text"> Miss</span></h2>
++                                            <h2 class="block text-2xl font-bold font-md text-[#583E15] sm:text-4xl md:text-5xl ">
++                                                Voices You Shouldn't 
++                                                <span class="text-primary_text"> Miss</span>
++                                            </h2>
+                                             <div
+                                                 class="m-auto mt-4 w-36 rounded-full h-1 bg-[#583E15] hidden md:block lg:block">
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+-                                <div class="voice-box">
++                                <div class="voice-box w-full max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+                                     <div
+                                         class="grid w-[90%] lg:w-[63%] mx-auto sm:grid-cols-2 lg:grid-cols-3 gap-4 px-10 lg:px-10">
+-                                        <span
+-                                            class="cursor-pointer transition bg-white py-3 px-16 w-full inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-xl border border-[#7A9C6F] text-[#7A9C6F] hover:bg-[#7A9C6F] hover:text-white disabled:opacity-50 disabled:pointer-events-none active: !text-white !bg-[#7A9C6F]">STUDENT</span><span
+-                                            class="cursor-pointer transition bg-white py-3 px-16 w-full inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-xl border border-[#6535BF] text-[#6535BF] hover:bg-[#6535BF] hover:text-white disabled:opacity-50 disabled:pointer-events-none  ">CORPORATE</span><span
+-                                            class="cursor-pointer transition bg-white py-3 px-16 w-full inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-xl border border-[#DB6A4F] text-[#DB6A4F] hover:bg-[#DB6A4F] hover:text-white disabled:opacity-50 disabled:pointer-events-none  ">INSTITUTIONS</span>
++                                        <span id="tab-btn-student"
++                                            class="cursor-pointer transition bg-white py-3 px-16 w-full inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-xl border border-[#7A9C6F] text-[#7A9C6F] hover:bg-[#7A9C6F] hover:text-white disabled:opacity-50 disabled:pointer-events-none active-tab !text-white !bg-[#7A9C6F]">STUDENT</span>
++                                        <span id="tab-btn-corporate"
++                                            class="cursor-pointer transition bg-white py-3 px-16 w-full inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-xl border border-[#6535BF] text-[#6535BF] hover:bg-[#6535BF] hover:text-white disabled:opacity-50 disabled:pointer-events-none">CORPORATE</span>
++                                        <span id="tab-btn-institution"
++                                            class="cursor-pointer transition bg-white py-3 px-16 w-full inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-xl border border-[#DB6A4F] text-[#DB6A4F] hover:bg-[#DB6A4F] hover:text-white disabled:opacity-50 disabled:pointer-events-none">INSTITUTIONS</span>
+                                     </div>
+-                                    <div class="overflow-hidden mb-10">
+-                                        <div class="flex gap-4 overflow-x-auto pb-4 justify-center mt-8">
+-                                            <div
+-                                                class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
+-                                                <div style="background-color: #DFECDB"
+-                                                    class="flex flex-col justify-between rounded-xl h-full w-full">
+-                                                    <div class="p-4 rounded-b-xl md:px-7">
+-                                                        <div class="flex items-center">
+-                                                            <div class="flex-shrink-0">
+-                                                                <img class="h-16 w-16 rounded-full object-cover"
+-                                                                    src="images/instructor_1.png" alt="Student" />
++
++                                    <!-- Testimonials Wrapper -->
++                                    <div class="mb-10 mt-8">
++                                        <!-- Student Tab Content (6 Cards, Sliding) -->
++                                        <div id="tab-content-student" class="tab-content">
++                                            <div class="testimonial-slider-container w-full">
++                                                <div class="testimonial-slider-track flex gap-4 transition-transform duration-500 ease-in-out">
++                                                    <!-- Card 1 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #DFECDB" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_1.png" alt="Student" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Sarah Jenkins</p>
++                                                                            <p class="text-xs text-gray-500">CPA Candidate</p>
++                                                                            <p class="text-xs text-gray-500">B.Com</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "KC GlobEd provided me with the best resources to pass my CPA exams on the first try. The T.E.E.E technology is a game-changer!"
++                                                                </p>
+                                                             </div>
+-                                                            <div class="flex flex-col">
+-                                                                <div class="grow ms-3 text-left">
+-                                                                    <p
+-                                                                        class="text-sm sm:text-base font-semibold text-gray-800">
+-                                                                        Sarah Jenkins</p>
+-                                                                    <p class="text-xs text-gray-500">CPA Candidate</p>
+-                                                                    <p class="text-xs text-gray-500">B.Com</p>
++                                                        </div>
++                                                    </div>
++
++                                                    <!-- Card 2 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #DFECDB" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_2.png" alt="Student" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Alex Mercer</p>
++                                                                            <p class="text-xs text-gray-500">CMA Candidate</p>
++                                                                            <p class="text-xs text-gray-500">B.BA</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
+                                                                 </div>
+-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="70"
+-                                                                    class="translate-x-2.5" viewBox="0 0 159 24.363">
+-                                                                    <g transform="translate(-5007 -2924.755)">
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5070.677 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5104.016 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5037.339 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5137.355 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5004 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                    </g>
+-                                                                </svg>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "The bite-sized videos and unlimited practice tests were crucial for my preparation. I was able to balance work and study easily."
++                                                                </p>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+-                                                    <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
+-                                                        <p
+-                                                            class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
+-                                                            "KC GlobEd provided me with the best resources to pass my
+-                                                            CPA exams on the first try. The T.E.E.E technology is a
+-                                                            game-changer!"
+-                                                        </p>
++
++                                                    <!-- Card 3 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #DFECDB" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_3.png" alt="Student" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Priya Sharma</p>
++                                                                            <p class="text-xs text-gray-500">CPA Candidate</p>
++                                                                            <p class="text-xs text-gray-500">M.Com</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "Passing my CPA exams felt possible because of the amazing mentor support and structured study planner. Highly recommended!"
++                                                                </p>
++                                                            </div>
++                                                        </div>
++                                                    </div>
++
++                                                    <!-- Card 4 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #DFECDB" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_4.png" alt="Student" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">David Kim</p>
++                                                                            <p class="text-xs text-gray-500">EA Candidate</p>
++                                                                            <p class="text-xs text-gray-500">B.Com</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "The real-time score analytics highlighted my weak areas so I could focus my practice. Passed all sections on my first attempt!"
++                                                                </p>
++                                                            </div>
++                                                        </div>
++                                                    </div>
++
++                                                    <!-- Card 5 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #DFECDB" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_1.png" alt="Student" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Fatima Al-Sayed</p>
++                                                                            <p class="text-xs text-gray-500">CPA Candidate</p>
++                                                                            <p class="text-xs text-gray-500">MBA</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "Excellent curriculum structure and study guides. The performance dashboard kept me motivated and on track throughout my journey."
++                                                                </p>
++                                                            </div>
++                                                        </div>
++                                                    </div>
++
++                                                    <!-- Card 6 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #DFECDB" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_2.png" alt="Student" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Liam O'Connor</p>
++                                                                            <p class="text-xs text-gray-500">CMA Candidate</p>
++                                                                            <p class="text-xs text-gray-500">B.Com</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "Unbelievable depth of study materials. The mock exams were extremely realistic, preparing me perfectly for the actual testing conditions."
++                                                                </p>
++                                                            </div>
++                                                        </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
++                                            <!-- Dots Container -->
++                                            <div class="dots-container flex justify-center gap-2 mt-6">
++                                                <!-- Dynamic dots will be rendered by JS -->
++                                            </div>
++                                        </div>
+ 
+-                                            <div
+-                                                class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
+-                                                <div style="background-color: #ede3ff"
+-                                                    class="flex flex-col justify-between rounded-xl h-full w-full">
+-                                                    <div class="p-4 rounded-b-xl md:px-7">
+-                                                        <div class="flex items-center">
+-                                                            <div class="flex-shrink-0">
+-                                                                <img class="h-16 w-16 rounded-full object-cover"
+-                                                                    src="images/instructor_2.png" alt="Corporate" />
++                                        <!-- Corporate Tab Content (6 Cards, Sliding) -->
++                                        <div id="tab-content-corporate" class="tab-content hidden">
++                                            <div class="testimonial-slider-container w-full">
++                                                <div class="testimonial-slider-track flex gap-4 transition-transform duration-500 ease-in-out">
++                                                    <!-- Corporate Card 1 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #ede3ff" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_2.png" alt="Corporate" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Michael Ross</p>
++                                                                            <p class="text-xs text-gray-500">Finance Manager</p>
++                                                                            <p class="text-xs text-gray-500">MBA</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "The corporate training solutions from KC GlobEd have significantly upskilled our finance team. Highly recommend their tailored programs."
++                                                                </p>
+                                                             </div>
+-                                                            <div class="flex flex-col">
+-                                                                <div class="grow ms-3 text-left">
+-                                                                    <p
+-                                                                        class="text-sm sm:text-base font-semibold text-gray-800">
+-                                                                        Michael Ross</p>
+-                                                                    <p class="text-xs text-gray-500">Finance Manager</p>
+-                                                                    <p class="text-xs text-gray-500">MBA</p>
++                                                        </div>
++                                                    </div>
++
++                                                    <!-- Corporate Card 2 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #ede3ff" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/coorparete_1.png" alt="Corporate" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Amanda Sterling</p>
++                                                                            <p class="text-xs text-gray-500">HR Director</p>
++                                                                            <p class="text-xs text-gray-500">MNC Corp</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
+                                                                 </div>
+-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="70"
+-                                                                    class="translate-x-2.5" viewBox="0 0 159 24.363">
+-                                                                    <g transform="translate(-5007 -2924.755)">
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5070.677 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5104.016 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5037.339 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5137.355 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5004 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                    </g>
+-                                                                </svg>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "Partnering with KC GlobEd has streamlined our onboarding and training. Their certification courses are top-tier."
++                                                                </p>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+-                                                    <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
+-                                                        <p
+-                                                            class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
+-                                                            "The corporate training solutions from KC GlobEd have
+-                                                            significantly upskilled our finance team. Highly recommend
+-                                                            their tailored programs."
+-                                                        </p>
++
++                                                    <!-- Corporate Card 3 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #ede3ff" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/coorparete_2.png" alt="Corporate" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Rajesh Patel</p>
++                                                                            <p class="text-xs text-gray-500">Chief Financial Officer</p>
++                                                                            <p class="text-xs text-gray-500">Global Fin</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "The depth of technical training offered is outstanding. Our team members who took the CPA course have shown immense growth."
++                                                                </p>
++                                                            </div>
++                                                        </div>
++                                                    </div>
++
++                                                    <!-- Corporate Card 4 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #ede3ff" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_3.png" alt="Corporate" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">James Peterson</p>
++                                                                            <p class="text-xs text-gray-500">Senior Analyst</p>
++                                                                            <p class="text-xs text-gray-500">FinCorp</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "The flexible schedules and remote learning platform made it extremely easy to train our analysts alongside their day jobs."
++                                                                </p>
++                                                            </div>
++                                                        </div>
++                                                    </div>
++
++                                                    <!-- Corporate Card 5 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #ede3ff" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_4.png" alt="Corporate" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Clara Oswald</p>
++                                                                            <p class="text-xs text-gray-500">Recruitment Head</p>
++                                                                            <p class="text-xs text-gray-500">Big 4</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "Candidates certified through KC GlobEd consistently show stronger domain knowledge and practical problem-solving skills."
++                                                                </p>
++                                                            </div>
++                                                        </div>
++                                                    </div>
++
++                                                    <!-- Corporate Card 6 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #ede3ff" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_1.png" alt="Corporate" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Samuel L. Jackson</p>
++                                                                            <p class="text-xs text-gray-500">Tax Advisor</p>
++                                                                            <p class="text-xs text-gray-500">Wealth Partners</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "An absolute game-changer for tax professionals in India looking to gain a foothold in US compliance and taxation."
++                                                                </p>
++                                                            </div>
++                                                        </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
++                                            <!-- Dots Container -->
++                                            <div class="dots-container flex justify-center gap-2 mt-6">
++                                                <!-- Dynamic dots will be rendered by JS -->
++                                            </div>
++                                        </div>
+ 
+-                                            <div
+-                                                class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
+-                                                <div style="background-color: #fbd5cb"
+-                                                    class="flex flex-col justify-between rounded-xl h-full w-full">
+-                                                    <div class="p-4 rounded-b-xl md:px-7">
+-                                                        <div class="flex items-center">
+-                                                            <div class="flex-shrink-0">
+-                                                                <img class="h-16 w-16 rounded-full object-cover"
+-                                                                    src="images/instructor_3.png" alt="Institution" />
++                                        <!-- Institution Tab Content (6 Cards, Sliding) -->
++                                        <div id="tab-content-institution" class="tab-content hidden">
++                                            <div class="testimonial-slider-container w-full">
++                                                <div class="testimonial-slider-track flex gap-4 transition-transform duration-500 ease-in-out">
++                                                    <!-- Institution Card 1 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #fbd5cb" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_3.png" alt="Institution" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Dr. Emily Chen</p>
++                                                                            <p class="text-xs text-gray-500">Dean of Academics</p>
++                                                                            <p class="text-xs text-gray-500">Ph.D.</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
+                                                             </div>
+-                                                            <div class="flex flex-col">
+-                                                                <div class="grow ms-3 text-left">
+-                                                                    <p
+-                                                                        class="text-sm sm:text-base font-semibold text-gray-800">
+-                                                                        Dr. Emily Chen</p>
+-                                                                    <p class="text-xs text-gray-500">Dean of Academics
+-                                                                    </p>
+-                                                                    <p class="text-xs text-gray-500">Ph.D.</p>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "Partnering with KC GlobEd has allowed our university to offer premium industry-aligned curriculum to our students seamlessly."
++                                                                </p>
++                                                            </div>
++                                                        </div>
++                                                    </div>
++
++                                                    <!-- Institution Card 2 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #fbd5cb" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_4.png" alt="Institution" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Dr. Arthur Pendelton</p>
++                                                                            <p class="text-xs text-gray-500">Head of Commerce Dept</p>
++                                                                            <p class="text-xs text-gray-500">Apex University</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
+                                                                 </div>
+-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="70"
+-                                                                    class="translate-x-2.5" viewBox="0 0 159 24.363">
+-                                                                    <g transform="translate(-5007 -2924.755)">
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5070.677 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5104.016 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5037.339 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5137.355 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                        <path
+-                                                                            d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z"
+-                                                                            transform="translate(5004 2921.755)"
+-                                                                            fill="#ECC82B" />
+-                                                                    </g>
+-                                                                </svg>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "Integrating the US CMA preparation with our bachelor's degree has given our graduates an incredible edge in global markets."
++                                                                </p>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+-                                                    <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
+-                                                        <p
+-                                                            class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
+-                                                            "Partnering with KC GlobEd has allowed our university to
+-                                                            offer premium industry-aligned curriculum to our students
+-                                                            seamlessly."
+-                                                        </p>
++
++                                                    <!-- Institution Card 3 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #fbd5cb" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/coorparete_3.png" alt="Institution" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Prof. Sophia Martinez</p>
++                                                                            <p class="text-xs text-gray-500">Academic Director</p>
++                                                                            <p class="text-xs text-gray-500">EduGlobal</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "The student engagement rate with KC GlobEd's portal is fantastic. Their T.E.E.E learning framework is highly effective."
++                                                                </p>
++                                                            </div>
++                                                        </div>
++                                                    </div>
++
++                                                    <!-- Institution Card 4 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #fbd5cb" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_1.png" alt="Institution" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Prof. William Henderson</p>
++                                                                            <p class="text-xs text-gray-500">Commerce Professor</p>
++                                                                            <p class="text-xs text-gray-500">State College</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "We noticed a substantial improvement in student participation after introducing KC GlobEd's supplementary study tools."
++                                                                </p>
++                                                            </div>
++                                                        </div>
++                                                    </div>
++
++                                                    <!-- Institution Card 5 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #fbd5cb" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/instructor_2.png" alt="Institution" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Dr. Evelyn Vance</p>
++                                                                            <p class="text-xs text-gray-500">Director of Education</p>
++                                                                            <p class="text-xs text-gray-500">Apex Institute</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "Their curriculum alignment with global standards has enabled our students to successfully clear international certification exams."
++                                                                </p>
++                                                            </div>
++                                                        </div>
++                                                    </div>
++
++                                                    <!-- Institution Card 6 -->
++                                                    <div class="testiSlider w-[20rem] md:w-[22rem] h-[24rem] flex-shrink-0 transition-transform">
++                                                        <div style="background-color: #fbd5cb" class="flex flex-col justify-between rounded-xl h-full w-full">
++                                                            <div class="p-4 rounded-b-xl md:px-7">
++                                                                <div class="flex items-center">
++                                                                    <div class="flex-shrink-0">
++                                                                        <img class="h-16 w-16 rounded-full object-cover" src="images/coorparete_1.png" alt="Institution" />
++                                                                    </div>
++                                                                    <div class="flex flex-col">
++                                                                        <div class="grow ms-3 text-left">
++                                                                            <p class="text-sm sm:text-base font-semibold text-gray-800">Prof. George Davis</p>
++                                                                            <p class="text-xs text-gray-500">Academic Head</p>
++                                                                            <p class="text-xs text-gray-500">Business School</p>
++                                                                        </div>
++                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" class="translate-x-2.5" viewBox="0 0 159 24.363">
++                                                                            <g transform="translate(-5007 -2924.755)">
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5070.677 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5104.016 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5037.339 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5137.355 2921.755)" fill="#ECC82B" />
++                                                                                <path d="M15.823,22.58l7.924,4.783-2.1-9.014,7-6.065L19.426,11.5,15.823,3l-3.6,8.5L3,12.284l7,6.065L7.9,27.363Z" transform="translate(5004 2921.755)" fill="#ECC82B" />
++                                                                            </g>
++                                                                        </svg>
++                                                                    </div>
++                                                                </div>
++                                                            </div>
++                                                            <div class="flex m-auto p-4 md:p-6 md:pt-3 text-left">
++                                                                <p class="text-base italic md:text-md text-gray-800 justify overflow-y-auto max-h-[16rem]">
++                                                                    "The support provided by KC GlobEd counsellors is highly commendable. They guide students at every phase of their prep."
++                                                                </p>
++                                                            </div>
++                                                        </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
++                                            <!-- Dots Container -->
++                                            <div class="dots-container flex justify-center gap-2 mt-6">
++                                                <!-- Dynamic dots will be rendered by JS -->
++                                            </div>
+                                         </div>
+                                     </div>
+                                 </div>
+@@ -1965,277 +2475,12 @@
+             </form>
+         </div>
+     </div>
+-    </div><!--$--><!--/$--><!--/$--></main>
+-    <footer class="relative z-2 bg-[#362752] text-white pt-20 pb-0 lg:pt-[30px] ">
+-        <div class="container mx-auto">
+-            <div class="ml-2 mr-4 flex flex-col md:flex-row justify-center">
+-                <div class="w-full px-4 sm:w-2/3 lg:w-2/12">
+-                    <div class="mb-10 w-full flex flex-col items-start justify-start gap-5"><a
+-                            class=" inline-block max-w-[160px]" href="/"><img draggable="false" alt="KCGLOBED" />
+-                                loading="lazy" width="160" height="100" decoding="async" data-nimg="1"
+-                                class="max-w-full" src="/assets/logo_white.svg" style="color: transparent;"></a>
+-                        <div class="w-full px-0 sm:w-1/2 lg:w-2/12 lg:hidden">
+-                            <div class="mb-5 w-full">
+-                                <h4 class="cursor-default text-dark mb-0 text-lg font-semibold">Professional Courses</h4>
+-                                <ul class="md:flex grid grid-cols-[repeat(3,_minmax(100px,1fr))] gap-2 md:flex-col">
+-                                    <li>
+-                                        <a class="cursor-pointer w-[163px] text-body-color hover:text-primary mb-1 inline-block xl:text-sm text-xs leading-loose"
+-                                            href="/course/ea?courseId=2">
+-                                            Enrolled Agent (EA)
+-                                        </a>
+-                                    </li>
+-
+-                                    <li class="text-center">
+-                                        <a class="cursor-pointer text-body-color hover:text-primary mb-1 ml-3 inline-block xl:text-sm text-xs leading-loose"
+-                                            href="/course/cpa">
+-                                            US CPA
+-                                        </a>
+-                                    </li>
+-
+-                                    <li>
+-                                        <a class="cursor-pointer text-body-color hover:text-primary mb-1 inline-block xl:text-sm text-xs leading-loose"
+-                                            href="/course/cma">
+-                                            US CMA
+-                                        </a>
+-                                    </li>
+-                                </ul>
+-                            </div>
+-                        </div><a target="_blank" rel="noopener noreferrer"
+-                            class=" text-dark flex flex-row items-start justify-evenly xl:text-sm text-xs font-medium"
+-                            href="https://www.google.com/search?q=KC+GlobEd+%7C+US+CPA,+US+CMA+%26+US+EA+Courses&amp;stick=H4sIAAAAAAAA_-NgU1I1qDC2NEgxTDNINjG1TDI0skyzMqgwsjQxTzZIs0iztEhKMjJJXMSq5e2s4J6Tn-SaolCjEBqs4BzgqAOmfR0V1EAMV0cF5_zSouLUYgCOiyJGVgAAAA&amp;hl=en&amp;mat=CQ7sNR06iLK_ElcBTVDHnvUVWYvHVh_mSc7BX9l4U0Mp2uLcFyp-Mbe_cyn-hFw27M3VGDNacS7dtXO5ej_I8Cb28wbkw1HC95w8-cN5DJFgxWrc9RVHWl0PRYMyTYAuyL0&amp;authuser=0"><span
+-                                class="text-primary mr-2 mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+-                                    height="16" viewBox="0 0 14.99 19.8">
+-                                    <path
+-                                        d="M214.5-818.569a1.491,1.491,0,0,0,1.122-.486,1.638,1.638,0,0,0,.462-1.169,1.6,1.6,0,0,0-.47-1.161,1.528,1.528,0,0,0-1.13-.478,1.49,1.49,0,0,0-1.122.486,1.637,1.637,0,0,0-.462,1.169,1.6,1.6,0,0,0,.47,1.161A1.528,1.528,0,0,0,214.5-818.569Zm-.008,10.369a33.888,33.888,0,0,1-5.6-6.42,10.328,10.328,0,0,1-1.894-5.4,7.983,7.983,0,0,1,2.155-5.7,7.042,7.042,0,0,1,5.34-2.287,7.042,7.042,0,0,1,5.34,2.287,7.983,7.983,0,0,1,2.155,5.7,10.328,10.328,0,0,1-1.894,5.4A33.888,33.888,0,0,1,214.495-808.2Z"
+-                                        transform="translate(-207 828)" fill="#fff"></path>
+-                                </svg></span>
+-                            <div class="flex flex-1 flex-col items-start justify-evenly"><span
+-                                    class="font-semibold text-base mb-1">Gurugram</span><span
+-                                    class="hover:underline text-sm font-normal opacity-[0.9] leading-[20px]">419-20,
+-                                    Vipul Plaza, 4th floor, Sector 54, Golf Course Road, Gurugram, Haryana<span
+-                                        class="block">122002</span></span></div>
+-                        </a>
+-                        <div
+-                            class="flex flex-col items-start justify-start gap-2 lg:grid lg:grid-cols-2 lg:w-[17.2rem] xl:w-[23rem] 2xl:w-[27.5rem] lg:gap-y-8">
+-                        </div>
+-                        <div class="number-box"><a target="_self"
+-                                class="text-dark flex items-center xl:text-sm text-xs font-medium mb-0 lg:mb-5"
+-                                href="tel: +91 9773576111"><span class="text-primary mr-2"><svg
+-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+-                                        class="w-4 h-4 fill-white">
+-                                        <path fill-rule="evenodd"
+-                                            d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+-                                            clip-rule="evenodd"></path>
+-                                    </svg></span><span>+91 97735 76111</span></a><a target="_blank"
+-                                class="border-left text-dark flex items-center xl:text-sm text-xs font-medium"
+-                                href="https://wa.me/+919773576111"><span class="text-primary mr-2"><svg
+-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+-                                        viewBox="0 0 17.163 17.244">
+-                                        <defs>
+-                                            <clipPath id="a">
+-                                                <rect width="17.163" height="17.244" transform="translate(0 0)"
+-                                                    fill="#fff"></rect>
+-                                            </clipPath>
+-                                        </defs>
+-                                        <g clip-path="url(#a)">
+-                                            <path
+-                                                d="M17.163,8.558a8.385,8.385,0,0,1-.439,2.7,8.553,8.553,0,0,1-7.072,5.783q-.34.042-.683.055c-.156.006-.312.012-.467.009a8.692,8.692,0,0,1-2.1-.292A8.516,8.516,0,0,1,4.584,16.1a.177.177,0,0,0-.141-.009L2.9,16.492l-2.8.734c-.112.029-.115.028-.084-.083l.708-2.586c.15-.549.3-1.1.452-1.646a.212.212,0,0,0-.02-.176A8.311,8.311,0,0,1,.482,11.2,8.669,8.669,0,0,1,.122,9.562,8.578,8.578,0,0,1,.069,8.17,8.356,8.356,0,0,1,.257,6.734a8.492,8.492,0,0,1,1.125-2.74A8.628,8.628,0,0,1,4.629.989,8.409,8.409,0,0,1,7.209.117,8.635,8.635,0,0,1,8.293.007C8.462,0,8.631-.005,8.8,0a8.974,8.974,0,0,1,1.6.187,8.6,8.6,0,0,1,5.545,3.961,8.413,8.413,0,0,1,1.076,2.842,8.6,8.6,0,0,1,.128,1.059c.01.169.01.337.014.51m-11.112-4v0H5.856a.731.731,0,0,0-.526.218c-.076.074-.149.152-.218.233A2.355,2.355,0,0,0,4.57,6.945a3.493,3.493,0,0,0,.411,1.171,7.037,7.037,0,0,0,.447.7c.244.35.494.694.771,1.019a9.329,9.329,0,0,0,1.132,1.125,6.32,6.32,0,0,0,1.419.912,10.289,10.289,0,0,0,1.673.592,2.779,2.779,0,0,0,1.111.082,1.633,1.633,0,0,0,.378-.09,2.658,2.658,0,0,0,.853-.536,1,1,0,0,0,.259-.357,2.359,2.359,0,0,0,.168-.828c0-.236-.03-.252-.21-.347-.131-.069-.266-.13-.4-.2-.351-.175-.7-.347-1.06-.511a1.727,1.727,0,0,0-.386-.144.255.255,0,0,0-.253.086,1.211,1.211,0,0,0-.08.105c-.206.284-.434.551-.665.815a.29.29,0,0,1-.333.089c-.042-.014-.083-.031-.123-.049l-.27-.121a5.516,5.516,0,0,1-1.5-.991A6.237,6.237,0,0,1,6.893,8.235a1.908,1.908,0,0,1-.145-.249.268.268,0,0,1,.025-.281.544.544,0,0,1,.059-.072c.063-.062.121-.128.178-.2A2.285,2.285,0,0,0,7.4,6.875a.39.39,0,0,0,.009-.316c-.026-.062-.054-.124-.08-.186-.177-.43-.352-.861-.531-1.29a1.69,1.69,0,0,0-.175-.347.4.4,0,0,0-.33-.178c-.08,0-.161,0-.242,0"
+-                                                transform="translate(0 0.002)" fill="#fff"></path>
+-                                        </g>
+-                                    </svg></span><span>+91 96675 83222</span></a></div><a
+-                            class="text-dark flex items-center xl:text-sm text-xs font-medium"
+-                            href="mailto: info@kcglobed.com"><span class="text-primary mr-3"><svg
+-                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 432 384">
+-                                    <path fill="white"
+-                                        d="M384 21q18 0 30.5 12.5T427 64v256q0 18-12.5 30.5T384 363H43q-18 0-30.5-12.5T0 320V64q0-18 12.5-30.5T43 21h341zm0 86V64L213 171L43 64v43l170 106z">
+-                                    </path>
+-                                </svg></span><span>info@kcglobed.com</span></a>
+-                    </div>
+-                </div>
+-                <div class="w-full px-4 sm:w-1/2 lg:w-2/12 hidden lg:block">
+-                    <div class="mb-10 w-full">
+-                        <h4 class="cursor-default text-dark mb-4 text-lg font-semibold">Professional Courses</h4>
+-                        <ul class="md:flex grid grid-cols-[repeat(3,_minmax(100px,1fr))] gap-2 md:flex-col">
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary mb-1 inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/course/ea?courseId=2">Enrolled Agent(EA)</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary mb-1 inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/course/cpa">US CPA</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary mb-1 inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/course/cma">US CMA</a></li>
+-                        </ul>
+-                    </div>
+-                </div>
+-                <div class="w-full px-4 sm:w-1/2 lg:w-2/12 hidden lg:block">
+-                    <div class="mb-10 w-full">
+-                        <h4 class="cursor-default text-dark mb-4 text-lg font-semibold">Quick Links</h4>
+-                        <ul class="md:flex grid grid-cols-[repeat(3,_minmax(100px,1fr))] gap-2 md:flex-col">
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/">Home</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/courses">Courses</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/books">Books</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/become-business-partner">Partner with Us</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/contactus#EnquireForm">Free Trial</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/blog">Blogs</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/about-us">About Us</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/contactus">Contact Us</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/placement">Placement Support</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/news-room">Newsroom</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-xs leading-loose"
+-                                    href="/renew-subscription">Renew Subscription</a></li>
+-                            <li><a target="_blank"
+-                                    class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-xs leading-loose"
+-                                    href="https://www.gccschool.com">GCC School</a></li>
+-                        </ul>
+-                    </div>
+-                </div>
+-                <div class="w-full px-4 sm:w-1/2 lg:w-3/12">
+-                    <div class="mb-10 w-full">
+-                        <div class="max-w-xl lg:max-w-lg">
+-                            <h4 class="text-dark mb-4 lg:mb-6 text-lg font-semibold">Join our Global Learning Community
+-                            </h4>
+-                            <form action="#"><input id="email-address"
+-                                    pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" autocomplete="email" required=""
+-                                    class="bg-white lg:min-w-[18rem] flex-auto rounded-md border-0 px-3.5 mr-3 text-black ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-gray-800 sm:xl:text-sm text-xs sm:leading-6 py-3"
+-                                    placeholder="Enter your email" type="email" value="" name="email"><input
+-                                    class="bg-mainColors cursor-pointer flex-none rounded-md px-3.5 py-3 xl:text-sm text-xs font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800 mt-2"
+-                                    type="submit" value="Subscribe"></form>
+-                        </div>
+-                        <h4 class=" mt-8 text-dark mb-2 text-lg font-semibold">Follow Us On</h4>
+-                        <div class="mb-8 flex items-center">
+-                            <ul class="footer-social-link mt-1 flex flex-row">
+-                                <li class="m-2 "><a href="https://www.linkedin.com/company/kc-globed/"
+-                                        target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="28"
+-                                            height="26.978" viewBox="0 0 26.977 26.978">
+-                                            <path
+-                                                d="M1179.918,6459.24a2.245,2.245,0,0,0-2.248,2.249v22.481a2.245,2.245,0,0,0,2.248,2.248H1202.4a2.245,2.245,0,0,0,2.248-2.248v-22.481a2.245,2.245,0,0,0-2.248-2.249Zm6.025,6.01a2.243,2.243,0,0,1-2.338,2.308,2.286,2.286,0,0,1,.06-4.571A2.246,2.246,0,0,1,1185.943,6465.25Zm5.635,4.121h-3.792v12.83h4v-6.564a3.844,3.844,0,0,1,.12-1.095,2.54,2.54,0,0,1,2.847-1.963A1.922,1.922,0,0,1,1196.4,6474a6,6,0,0,1,.225,1.558c.015,1.574.015,3.133,0,4.706v1.934h4v-2.338c0-1.693,0-3.387.015-5.081a9.4,9.4,0,0,0-.27-2.248,4.492,4.492,0,0,0-1.8-2.668,4.051,4.051,0,0,0-2.233-.81c-.09,0-.18-.016-.285-.016a4.938,4.938,0,0,0-1.244.031,5.018,5.018,0,0,0-2.907,1.678c-.09.105-.18.225-.3.375l-.03.045Zm-9.892,12.844h3.972v-12.829h-3.972Z"
+-                                                transform="translate(-1177.67 -6459.24)" fill="#fff"
+-                                                fill-rule="evenodd"></path>
+-                                        </svg></a></li>
+-                                <li class="m-2 "><a href="https://www.instagram.com/kcglobed/" target="_blank"><svg
+-                                            xmlns="http://www.w3.org/2000/svg" width="28" height="26.675"
+-                                            viewBox="0 0 26.676 26.675">
+-                                            <path
+-                                                d="M152.34,12.5a6.839,6.839,0,0,0,0,13.678A7.073,7.073,0,0,0,156,25.12a6.7,6.7,0,0,0,3.178-5.782A6.828,6.828,0,0,0,152.34,12.5Zm0,11.285a4.446,4.446,0,1,1,4.446-4.446A4.454,4.454,0,0,1,152.34,23.784Zm8.712-11.565a1.595,1.595,0,1,1-1.595-1.6A1.591,1.591,0,0,1,161.053,12.219Zm4.528,1.619a7.9,7.9,0,0,0-2.154-5.589,7.944,7.944,0,0,0-5.588-2.155c-2.2-.125-8.8-.125-11,0a7.934,7.934,0,0,0-5.588,2.149,7.921,7.921,0,0,0-2.154,5.589c-.126,2.2-.126,8.8,0,11.006a7.9,7.9,0,0,0,2.154,5.589,7.955,7.955,0,0,0,5.588,2.155c2.2.125,8.8.125,11,0a7.892,7.892,0,0,0,5.588-2.155,7.945,7.945,0,0,0,2.154-5.589C165.707,22.635,165.707,16.04,165.581,13.838ZM162.737,27.2a4.5,4.5,0,0,1-2.535,2.536c-1.756.7-5.921.536-7.861.536s-6.111.155-7.861-.536a4.5,4.5,0,0,1-2.536-2.536c-.7-1.756-.536-5.923-.536-7.863s-.154-6.113.536-7.863a4.5,4.5,0,0,1,2.536-2.536c1.755-.7,5.921-.536,7.861-.536s6.112-.155,7.861.536a4.5,4.5,0,0,1,2.535,2.536c.7,1.756.536,5.923.536,7.863S163.433,25.451,162.737,27.2Z"
+-                                                transform="translate(-139 -6)" fill="#fff"></path>
+-                                        </svg></a></li>
+-                                <li class="m-2"><a
+-                                        href="https://www.youtube.com/channel/UCW6spaUEQs_cyWl5Zu4P29A/featured?view_as=subscriber"
+-                                        target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="33" height="28"
+-                                            viewBox="0 0 34.615 24.338">
+-                                            <path
+-                                                d="M236.187,12.141a4.348,4.348,0,0,0-3.06-3.08c-2.7-.728-13.524-.728-13.524-.728s-10.824,0-13.524.728a4.35,4.35,0,0,0-3.06,3.08,45.609,45.609,0,0,0-.724,8.386,45.609,45.609,0,0,0,.724,8.386,4.285,4.285,0,0,0,3.06,3.031c2.7.728,13.524.728,13.524.728s10.824,0,13.524-.728a4.283,4.283,0,0,0,3.06-3.031,45.609,45.609,0,0,0,.724-8.386A45.609,45.609,0,0,0,236.187,12.141ZM216.064,25.674V15.38l9.046,5.147Z"
+-                                                transform="translate(-202.296 -8.333)" fill="#fff"></path>
+-                                        </svg></a></li>
+-                                <li class="m-2"><a href="https://twitter.com/KCGlobEd" target="_blank"><svg
+-                                            xmlns="http://www.w3.org/2000/svg" width="28" height="27.209"
+-                                            viewBox="0 0 27.187 27.209">
+-                                            <path
+-                                                d="M16.182,11.523,26.3,0h-2.4L15.114,10,8.1,0H0L10.615,15.128,0,27.209H2.4l9.28-10.566L19.09,27.209h8.1M3.263,1.771H6.947L23.905,25.526H20.22"
+-                                                fill="#fff"></path>
+-                                        </svg></a></li>
+-                                <li class="m-2 "><a href="https://www.facebook.com/kcglobed/" target="_blank"><svg
+-                                            xmlns="http://www.w3.org/2000/svg" width="28.476" height="28.476"
+-                                            viewBox="0 0 28.476 28.476">
+-                                            <path
+-                                                d="M28.476,19.324A14.238,14.238,0,1,0,12.013,33.476V23.465H8.4V19.324h3.617V16.168c0-3.59,2.124-5.573,5.378-5.573a21.782,21.782,0,0,1,3.187.28V14.4h-1.8a2.064,2.064,0,0,0-2.32,2.237v2.689h3.949l-.632,4.141H16.462v10.01A14.3,14.3,0,0,0,28.476,19.324Z"
+-                                                transform="translate(0 -5)" fill="#fff"></path>
+-                                        </svg></a></li>
+-                                <li class="m-2 "><a href="https://in.pinterest.com/kcglobed/pins/" target="_blank"><svg
+-                                            xmlns="http://www.w3.org/2000/svg" width="28" height="28.477"
+-                                            viewBox="0 0 28.477 28.477">
+-                                            <path
+-                                                d="M28.477,14.8A14.24,14.24,0,0,1,10.024,28.4a16.005,16.005,0,0,0,1.768-3.732c.172-.666.884-3.387.884-3.387a3.813,3.813,0,0,0,3.261,1.636c4.294,0,7.389-3.95,7.389-8.859,0-4.7-3.841-8.221-8.778-8.221-6.143,0-9.41,4.122-9.41,8.618,0,2.09,1.114,4.691,2.888,5.517.27.126.413.069.477-.189.046-.2.287-1.165.4-1.613a.426.426,0,0,0-.1-.408,5.607,5.607,0,0,1-1.051-3.25,6.161,6.161,0,0,1,6.43-6.178,5.621,5.621,0,0,1,5.948,5.793c0,3.852-1.946,6.522-4.478,6.522a2.065,2.065,0,0,1-2.107-2.572c.4-1.694,1.177-3.519,1.177-4.742a1.788,1.788,0,0,0-1.8-2c-1.43,0-2.578,1.476-2.578,3.456a5.13,5.13,0,0,0,.425,2.113S9.358,22.861,9.1,23.975a13.782,13.782,0,0,0-.052,4.088A14.24,14.24,0,1,1,28.477,14.8Z"
+-                                                transform="translate(0 -0.563)" fill="#fff"></path>
+-                                        </svg></a></li>
+-                            </ul>
+-                        </div>
+-                    </div>
+-                </div>
+-                <div class="w-full px-4 sm:w-1/2 lg:w-2/12 lg:hidden">
+-                    <div class="mb-10 w-full">
+-                        <h4 class="cursor-default text-dark mb-4 text-lg font-semibold">Quick Links</h4>
+-                        <ul class="md:flex grid grid-cols-[repeat(3,_minmax(100px,1fr))] gap-0 md:flex-col">
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-[10px] leading-loose"
+-                                    href="/">Home</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-[10px] leading-loose"
+-                                    href="/courses">Courses</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-[10px] leading-loose"
+-                                    href="/books">Books</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-[10px] leading-loose"
+-                                    href="/become-business-partner">Partner with Us</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-[10px] leading-loose"
+-                                    href="/contactus#EnquireForm">Free Trial</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-[10px] leading-loose"
+-                                    href="/blog">Blogs</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-[10px] leading-loose"
+-                                    href="/about-us">About Us</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-[10px] leading-loose"
+-                                    href="/contactus">Contact Us</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-[10px] leading-loose"
+-                                    href="/placement">Placement Support</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-[10px] leading-loose"
+-                                    href="/news-room">Newsroom</a></li>
+-                            <li><a class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-[10px] leading-loose"
+-                                    href="/renew-subscription">Renew Subscription</a></li>
+-                            <li><a target="_blank"
+-                                    class="cursor-pointer text-body-color hover:text-primary inline-block xl:text-sm text-[10px] leading-loose"
+-                                    href="https://www.gccschool.com">Gcc School</a></li>
+-                        </ul>
+-                    </div>
+-                </div>
+-            </div>
+-        </div>
+-        <div
+-            class="mx-[5%] md:mx-[16%] pb-10 border-t pt-3 border-white mt-5 sm:mt-12 grid gap-y-2 sm:gap-y-0 sm:flex sm:justify-between sm:items-center">
+-            <div class="flex justify-between items-center">
+-                <p class="xl:text-sm text-[10px] text-white">Copyright ┬⌐ 2026 KC GLOBED</p>
+-            </div>
+-            <div class="flex"><a
+-                    class="text-[10px] text-xs cursor-pointer mr-5 inline-flex justify-center items-center gap-x-2 font-regular rounded-lg border border-transparent text-white hover:bg-white/10 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-1 focus:ring-gray-600"
+-                    href="/return-policy">Return Policy</a><a
+-                    class="text-[10px] text-xs cursor-pointer mr-5 inline-flex justify-center items-center gap-x-2 font-regular rounded-lg border border-transparent text-white hover:bg-white/10 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-1 focus:ring-gray-600"
+-                    href="/privacy-policy">Privacy Policy</a><a
+-                    class="text-[10px] text-xs cursor-pointer inline-flex justify-center items-center gap-x-2 font-regular rounded-lg border border-transparent text-white hover:bg-white/10 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-1 focus:ring-gray-600"
+-                    href="/terms-conditions">Terms &amp; Conditons</a></div>
+-        </div>
+-        <div><span class="absolute left-0 bottom-0 z-[-1]"><svg width="217" height="229" viewBox="0 0 217 229"
+-                    fill="none" xmlns="http://www.w3.org/2000/svg">
+-                    <path
+-                        d="M-64 140.5C-64 62.904 -1.096 1.90666e-05 76.5 1.22829e-05C154.096 5.49924e-06 217 62.904 217 140.5C217 218.096 154.096 281 76.5 281C-1.09598 281 -64 218.096 -64 140.5Z"
+-                        fill="url(#paint0_linear_1179_5)"></path>
+-                    <defs>
+-                        <linearGradient id="paint0_linear_1179_5" x1="76.5" y1="281" x2="76.5" y2="1.22829e-05"
+-                            gradientUnits="userSpaceOnUse">
+-                            <stop stop-color="#3056D3" stop-opacity="0.08"></stop>
+-                            <stop offset="1" stop-color="#C4C4C4" stop-opacity="0"></stop>
+-                        </linearGradient>
+-                    </defs>
+-                </svg></span><span class="absolute top-10 right-10 z-[-1]"><svg width="75" height="75"
+-                    viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+-                    <path
+-                        d="M37.5 -1.63918e-06C58.2107 -2.54447e-06 75 16.7893 75 37.5C75 58.2107 58.2107 75 37.5 75C16.7893 75 -7.33885e-07 58.2107 -1.63918e-06 37.5C-2.54447e-06 16.7893 16.7893 -7.33885e-07 37.5 -1.63918e-06Z"
+-                        fill="url(#paint0_linear_1179_4)"></path>
+-                    <defs>
+-                        <linearGradient id="paint0_linear_1179_4" x1="-1.63917e-06" y1="37.5" x2="75" y2="37.5"
+-                            gradientUnits="userSpaceOnUse">
+-                            <stop stop-color="#13C296" stop-opacity="0.31"></stop>
+-                            <stop offset="1" stop-color="#C4C4C4" stop-opacity="0"></stop>
+-                        </linearGradient>
+-                    </defs>
+-                </svg></span></div>
+-        <div class="lg:hidden bg-[#fff] py-3"></div>
+-    </footer>
+-    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57DBZ2MJ" height="0" width="0"></iframe>
+-            style="display:none;visibility:hidden"></iframe></noscript>
++    </div>
++    </main>
++
++    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57DBZ2MJ" height="0"
++            width="0"></iframe>
++        style="display:none;visibility:hidden"></iframe></noscript>
+     <link rel="preload" as="image" href="/assets/yellow_squre_dots.svg">
+     <link rel="preload" as="image" href="/assets/purple_squre_dots.svg">
+     <link rel="preload" as="image"
+@@ -2302,23 +2547,7 @@
+         href="https://storage.googleapis.com/static_files_backend/media/landing/careen_transition.497f7390_Ds3BdHA.svg">
+     <div class="razorpay-container"
+         style="z-index: 2147483647; position: fixed; top: 0px; display: none; left: 0px; height: 100%; width: 100%; max-height: 100dvh; backface-visibility: hidden; overflow-y: visible;">
+-        <style>
+-            @keyframes rzp-rot {
+-                to {
+-                    transform: rotate(360deg);
+-                }
+-            }
+-
+-            @-webkit-keyframes rzp-rot {
+-                to {
+-                    -webkit-transform: rotate(360deg);
+-                }
+-            }
+ 
+-            .razorpay-container>iframe {
+-                min-height: 100% !important;
+-            }
+-        </style>
+         <div class="razorpay-backdrop"
+             style="min-height: 100%; transition: 0.3s ease-out; position: fixed; top: 0px; left: 0px; width: 100%; height: 100%;">
+             <span
+@@ -2345,6 +2574,176 @@
+         content="KC Globed: Complete Guide to CPA, EA, CMA Certification with AICPA, NASBA, IRS EA Exam &amp; More">
+     <meta name="twitter:description"
+         content="Explore KC Globed's complete guide to CPA, EA, and CMA certification, covering AICPA, NASBA, IRS EA exam, and more. Learn about eligibility, requirements, and advance your career in accounting and tax.">
++    <script>
++        document.addEventListener('DOMContentLoaded', () => {
++            const tabBtnStudent = document.getElementById('tab-btn-student');
++            const tabBtnCorporate = document.getElementById('tab-btn-corporate');
++            const tabBtnInstitution = document.getElementById('tab-btn-institution');
++
++            const tabContentStudent = document.getElementById('tab-content-student');
++            const tabContentCorporate = document.getElementById('tab-content-corporate');
++            const tabContentInstitution = document.getElementById('tab-content-institution');
++
++            class TestimonialSlider {
++                constructor(tabId, dotColor) {
++                    this.container = document.getElementById(`tab-content-${tabId}`);
++                    if (!this.container) return;
++                    this.track = this.container.querySelector('.testimonial-slider-track');
++                    this.cards = this.track ? this.track.querySelectorAll('.testiSlider') : [];
++                    this.dotsContainer = this.container.querySelector('.dots-container');
++                    this.dotColor = dotColor;
++                    this.currentSlideIndex = 0;
++                    this.slideInterval = null;
++
++                    // Bind methods
++                    this.updateSlider = this.updateSlider.bind(this);
++                    this.nextSlide = this.nextSlide.bind(this);
++                    this.start = this.start.bind(this);
++                    this.stop = this.stop.bind(this);
++                }
++
++                getSliderStep() {
++                    if (window.innerWidth >= 1024) return 3;
++                    if (window.innerWidth >= 640) return 2;
++                    return 1;
++                }
++
++                renderDots(pageCount) {
++                    if (!this.dotsContainer) return;
++                    this.dotsContainer.innerHTML = '';
++                    for (let i = 0; i < pageCount; i++) {
++                        const dot = document.createElement('span');
++                        dot.className = `slider-dot w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${i === this.currentSlideIndex ? 'opacity-100 scale-125' : 'opacity-30'}`;
++                        dot.style.backgroundColor = this.dotColor;
++                        dot.addEventListener('click', () => {
++                            this.goToSlide(i);
++                            this.resetSlideTimer();
++                        });
++                        this.dotsContainer.appendChild(dot);
++                    }
++                }
++
++                updateSlider() {
++                    if (!this.track || this.cards.length === 0) return;
++                    const step = this.getSliderStep();
++                    const pageCount = Math.ceil(this.cards.length / step);
++                    
++                    if (this.currentSlideIndex >= pageCount) {
++                        this.currentSlideIndex = 0;
++                    }
++
++                    this.renderDots(pageCount);
++
++                    const cardWidth = this.cards[0].getBoundingClientRect().width;
++                    const gap = 16; // Matches grid gap of 16px
++                    const offset = this.currentSlideIndex * step * (cardWidth + gap);
++                    this.track.style.transform = `translateX(-${offset}px)`;
++                }
++
++                nextSlide() {
++                    const step = this.getSliderStep();
++                    const pageCount = Math.ceil(this.cards.length / step);
++                    if (pageCount <= 1) {
++                        this.currentSlideIndex = 0;
++                    } else {
++                        this.currentSlideIndex = (this.currentSlideIndex + 1) % pageCount;
++                    }
++                    this.updateSlider();
++                }
++
++                goToSlide(index) {
++                    this.currentSlideIndex = index;
++                    this.updateSlider();
++                }
++
++                start() {
++                    this.currentSlideIndex = 0;
++                    this.updateSlider();
++                    this.startSlideTimer();
++                }
++
++                stop() {
++                    this.stopSlideTimer();
++                }
++
++                startSlideTimer() {
++                    if (this.slideInterval) clearInterval(this.slideInterval);
++                    this.slideInterval = setInterval(this.nextSlide, 3000);
++                }
++
++                stopSlideTimer() {
++                    if (this.slideInterval) {
++                        clearInterval(this.slideInterval);
++                        this.slideInterval = null;
++                    }
++                }
++
++                resetSlideTimer() {
++                    this.startSlideTimer();
++                }
++            }
++
++            const sliders = {
++                student: new TestimonialSlider('student', '#7A9C6F'),
++                corporate: new TestimonialSlider('corporate', '#6535BF'),
++                institution: new TestimonialSlider('institution', '#DB6A4F')
++            };
++
++            function activateTab(tabId) {
++                if (!tabContentStudent || !tabContentCorporate || !tabContentInstitution) return;
++                
++                // Hide all tab contents
++                tabContentStudent.classList.add('hidden');
++                tabContentCorporate.classList.add('hidden');
++                tabContentInstitution.classList.add('hidden');
++
++                // Remove active classes
++                if (tabBtnStudent) tabBtnStudent.classList.remove('!text-white', '!bg-[#7A9C6F]');
++                if (tabBtnCorporate) tabBtnCorporate.classList.remove('!text-white', '!bg-[#6535BF]');
++                if (tabBtnInstitution) tabBtnInstitution.classList.remove('!text-white', '!bg-[#DB6A4F]');
++
++                // Stop all sliders
++                Object.values(sliders).forEach(slider => slider.stop());
++
++                // Activate requested tab
++                if (tabId === 'student') {
++                    tabContentStudent.classList.remove('hidden');
++                    if (tabBtnStudent) tabBtnStudent.classList.add('!text-white', '!bg-[#7A9C6F]');
++                    sliders.student.start();
++                } else if (tabId === 'corporate') {
++                    tabContentCorporate.classList.remove('hidden');
++                    if (tabBtnCorporate) tabBtnCorporate.classList.add('!text-white', '!bg-[#6535BF]');
++                    sliders.corporate.start();
++                } else if (tabId === 'institution') {
++                    tabContentInstitution.classList.remove('hidden');
++                    if (tabBtnInstitution) tabBtnInstitution.classList.add('!text-white', '!bg-[#DB6A4F]');
++                    sliders.institution.start();
++                }
++            }
++
++            if (tabBtnStudent) tabBtnStudent.addEventListener('click', () => activateTab('student'));
++            if (tabBtnCorporate) tabBtnCorporate.addEventListener('click', () => activateTab('corporate'));
++            if (tabBtnInstitution) tabBtnInstitution.addEventListener('click', () => activateTab('institution'));
++
++            // Use load event to ensure exact rendering measurements are accurate
++            window.addEventListener('load', () => {
++                activateTab('student');
++            });
++
++            // Fallback in case load event already fired
++            if (document.readyState === 'complete') {
++                activateTab('student');
++            }
++
++            window.addEventListener('resize', () => {
++                Object.values(sliders).forEach(slider => {
++                    if (slider.container && !slider.container.classList.contains('hidden')) {
++                        slider.updateSlider();
++                    }
++                });
++            });
++        });
++    </script>
+ </body>
+ 
+ </html>
+\ No newline at end of file
