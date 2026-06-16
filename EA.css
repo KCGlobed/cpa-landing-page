@@ -1,0 +1,1706 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+.topbar {
+    background: #3D1F73;
+}
+
+.topbar-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 8px 20px;
+}
+
+.topbar-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    align-items: center;
+}
+
+.top-link {
+    color: #e5e7eb;
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.top-link:hover {
+    color: #8646ff;
+}
+
+.top-link img {
+    height: 16px;
+}
+
+/* Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.main-bar {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 50px;
+    height: 75px;
+}
+
+.logo img {
+    height: 45px;
+    object-fit: contain;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1010;
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #2b2b2b;
+    font-size: 16px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+    position: relative;
+    min-height: 730px;
+    background: url("./images/hero.png");
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0 120px;
+    overflow: hidden;
+}
+
+.hero-container {
+    width: 75%;
+    max-width: 1200px;
+    margin: 0px auto;
+    display: flex;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    gap: 100px;
+}
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.hero-content {
+    flex: 1;
+    color: white;
+    max-width: 1200px;
+}
+
+.hero-content h1 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.highlight {
+    color: #FBB03B;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 32px;
+    margin-top: 20px;
+    line-height: 41.13px;
+}
+
+.hero-content p {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 30.08px;
+}
+
+.hero-content img {
+    width: 180px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   GOOGLE CARD
+========================= */
+
+.rating-card {
+    max-width: 180px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.subscribe-btn {
+    background: #f7b236;
+    color: #222;
+    border: none;
+    padding: 16px 28px;
+    border-radius: 40px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* =========================
+   FORM CARD
+========================= */
+
+.hero-form {
+    width: 490px;
+    max-height: 460px;
+    background: #fff;
+    border-radius: 25px;
+    padding: 35px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.hero-form h2 {
+    text-align: center;
+    color: #111;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 30px;
+}
+
+.hero-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.hero-form input,
+.hero-form select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #d8d8d8;
+    border-radius: 30px;
+    padding: 0 18px;
+    font-size: 15px;
+    outline: none;
+}
+
+.hero-form input:focus,
+.hero-form select:focus {
+    border-color: #8a63c7;
+}
+
+.select-row {
+    display: flex;
+    gap: 15px;
+}
+
+.hero-form button {
+    height: 45px;
+    border: none;
+    border-radius: 30px;
+    background: #8862c8;
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+    .hero-container {
+        flex-direction: column;
+    }
+
+    .hero-form {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 45px;
+    }
+
+    .hero-content h2 {
+        font-size: 32px;
+    }
+
+    .hero-features {
+        display: none;
+    }
+}
+
+.features-section {
+    position: relative;
+    z-index: 100;
+
+    margin-top: -100px;
+    /* Moves circles upward */
+
+    background: transparent;
+    /* Important */
+}
+
+.features-container {
+    width: 85%;
+    max-width: 1500px;
+
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+    position: relative;
+    z-index: 101;
+}
+
+.feature-card {
+    width: 169px;
+    height: 165px;
+
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+
+    flex-shrink: 0;
+}
+
+.feature-card h3 {
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 700;
+
+    margin-bottom: 15px;
+    padding: 0 25px;
+}
+
+.feature-card img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+.purple {
+    background: #8457e7;
+    color: #fff;
+}
+
+.yellow {
+    background: #e7a332;
+    color: #000;
+}
+
+/* ==========================================
+   US CPA DETAILS SECTION (cpa-course-section)
+   ========================================== */
+
+.cpa-course-section {
+    background-color: #fff;
+    padding: 100px 0;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+.cpa-course-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+
+/* CPA Card Styling */
+.cpa-card {
+    width: 360px;
+    background-color: rgb(255, 247, 235);
+    /* Elegant soft lavender card background */
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 0 20px 40px rgba(132, 87, 231, 0.08), 0 5px 15px rgba(0, 0, 0, 0.02);
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cpa-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(132, 87, 231, 0.12), 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+.cpa-card-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.cpa-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cpa-card-body {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "left right"
+        "footer footer";
+    padding: 18px 8px 8px 8px;
+    gap: 15px 0;
+}
+
+.cpa-card-left-side {
+    grid-area: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.cpa-card-right-side {
+    grid-area: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 10px;
+}
+
+.cpa-card-badge {
+    font-size: 13px;
+    font-weight: 800;
+    color: rgb(178, 145, 58);
+    /* Matching the seal/ribbon magenta color */
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.cpa-card-title {
+    font-size: 18px;
+    font-weight: 100;
+    color: #3a3a3a;
+    line-height: 1.35;
+    margin-bottom: 15px;
+}
+
+.cpa-card-jobs-wrapper {
+    display: flex;
+    align-items: flex-end;
+}
+
+.cpa-card-jobs {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.cpa-jobs-count {
+    font-size: 24px;
+    font-weight: 800;
+    color: rgb(178, 145, 58);
+    line-height: 1;
+}
+
+.cpa-jobs-text {
+    font-size: 11px;
+    font-weight: 600;
+    color: #555555;
+    letter-spacing: 0.2px;
+}
+
+.cpa-certificate-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cpa-certificate-badge img {
+    width: 68px;
+    height: 68px;
+    object-fit: contain;
+    display: block;
+}
+
+.cpa-card-footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(132, 87, 231, 0.15);
+}
+
+.cpa-card-duration {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #555555;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.cpa-footer-icon {
+    color: #555555;
+    flex-shrink: 0;
+}
+
+.cpa-card-rating {
+    display: flex;
+    gap: 2px;
+}
+
+.cpa-star-icon {
+    width: 14px;
+    height: 14px;
+    fill: rgb(178, 145, 58);
+    /* Matching the stars to the main card accent color */
+}
+
+/* CPA Right Content Styling */
+.cpa-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.cpa-info-badge {
+    font-size: 36px;
+    font-weight: 800;
+    color: rgb(178, 145, 58);
+    /* US CPA in rich wine red/magenta */
+    line-height: 1.1;
+    margin-bottom: 12px;
+}
+
+.cpa-section-heading {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111111;
+    line-height: 1.25;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+}
+
+.cpa-section-text {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.cpa-cta-button {
+    display: inline-block;
+    background-color: #f7b236;
+    /* Matching the main orange CTA buttons */
+    color: #1b1b2f;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(247, 178, 54, 0.25);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.cpa-cta-button:hover {
+    background-color: #e59f20;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(247, 178, 54, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .cpa-course-section {
+        padding: 60px 0;
+    }
+
+    .cpa-course-container {
+        flex-direction: column;
+        gap: 50px;
+        text-align: left;
+    }
+
+    .cpa-content {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 27px;
+    }
+
+    .cpa-card {
+        width: 100%;
+        max-width: 380px;
+        align-self: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .cpa-info-badge {
+        font-size: 30px;
+    }
+
+    .cpa-section-heading {
+        font-size: 22px;
+    }
+
+    .cpa-card {
+        width: 100%;
+    }
+}
+
+
+
+/* WHY CPA SECTION */
+.why-cpa {
+    padding: 80px 0;
+    background: #f7f8f8;
+}
+
+.why-cpa h2 {
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #2f3b52;
+    margin-bottom: 100px;
+}
+
+.why-cpa h2 span {
+    color: #d89b2d;
+}
+
+.why-cpa-container {
+    max-width: 1200px;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.why-card {
+    width: 250px;
+    min-height: 420px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 120px;
+    /* padding: 110px 25px 40px; */
+    position: relative;
+    box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.03),
+        0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.icon-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #4a258d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 40px 0;
+}
+
+.icon-circle img {
+    height: 80px;
+    object-fit: contain;
+}
+
+.why-card h3 {
+    color: #c8952d;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    padding: 0 auto;
+}
+
+
+.why-card-description {
+    padding: 0 40px;
+    color: #555;
+    padding-bottom: 4rem;
+    font-size: 1.3rem;
+    margin-bottom: 95px;
+}
+
+.why-card-description p {
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 1.5;
+    color: #4f5d75;
+}
+
+
+/* CAREER SECTION */
+.career-section {
+    background: #f5f7f4;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.career-section h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 50px;
+}
+
+.career-section h2 span {
+    color: #e3a131;
+}
+
+.career-image {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.career-image img {
+    width: 100%;
+    display: block;
+}
+
+/* INSTRUCTORS SECTION */
+.instructors-section {
+    background: linear-gradient(180deg,
+            #6b36d7 0%,
+            #6f3ae0 100%);
+
+    padding: 80px 20px 100px;
+}
+
+.instructors-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.instructors-header h2 {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.instructors-header p {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.instructors-grid {
+    max-width: 850px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0px;
+    row-gap: 25px;
+}
+
+.instructors-grid img {
+    width: 370px;
+    height: 202px;
+    display: block;
+    border-radius: 20px;
+    transition: 0.3s ease;
+}
+
+
+/* ELIGIBILITY SECTION */
+.eligibility-section {
+    background:  rgb(255, 247, 235);
+    padding: 100px 20px;
+}
+
+.eligibility-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.eligibility-container h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 25px;
+}
+
+.eligibility-container h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.eligibility-container h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 24px;
+}
+
+.eligibility-content p {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 10px;
+}
+
+
+/* EXAM PATTERN */
+.exam-pattern {
+    padding: 100px 0;
+    background: #E5E5E5;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.exam-pattern h2 {
+    font-size: 2.8rem;
+    color: #2f3b52;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.exam-heading {
+    width: 90%;
+    max-width: 1140px;
+    margin: 0 auto 30px;
+    background: rgb(178, 145, 58);
+    color: white;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.discipline {
+    margin-top: 50px;
+}
+
+.exam-grid {
+    width: 90%;
+    max-width: 1140px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.exam-card {
+    width: 350px;
+    background: white;
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.card-title {
+    background: rgb(178, 145, 58);
+    color: white;
+    padding: 15px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.35;
+    text-transform: uppercase;
+}
+
+.card-body {
+    background: #f1ecf7;
+    margin-top: 8px;
+    padding: 18px 16px;
+    border-radius: 15px;
+    min-height: 245px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    font-size: 12.5px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.hightlight {
+    color: #030303;
+    font-weight: 700;
+}
+
+.row span:first-child {
+    padding-right: 15px;
+}
+
+.row span:last-child {
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.row.heading {
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #111;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.card-footer span {
+    flex: 1;
+    background: transparent;
+    color: rgb(178, 145, 58);
+    padding: 10px 6px;
+    border-radius: 25px;
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.exam-summary {
+    width: 380px;
+    margin: 45px auto 0;
+    border: 2px solid #86357a;
+    border-radius: 70px;
+    padding: 20px 24px;
+    background: transparent;
+    box-shadow: 0 5px 15px rgba(142, 58, 143, 0.08);
+}
+
+.exam-summary h3 {
+    color: #86357a;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.exam-summary p {
+    color: #86357a;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 8px 0;
+}
+
+.exam-summary small {
+    font-weight: 700;
+    font-size: 18px;
+    color: #161616;
+    display: block;
+    margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+    .exam-heading {
+        font-size: 14px;
+        width: 95%;
+    }
+
+    .exam-card {
+        width: 100%;
+        max-width: 340px;
+    }
+
+    .exam-summary {
+        width: 95%;
+        max-width: 360px;
+        border-radius: 40px;
+        padding: 15px;
+    }
+}
+
+
+/* OFFEREING SECTION  */
+.offerings-section {
+    padding: 80px 0 100px;
+    background: #FAFBFF;
+}
+
+.offerings-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 70px;
+}
+
+.offerings-container {
+    width: 75%;
+    max-width: 1450px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.offerings-card {
+    flex: 1;
+    border: 2px solid #eadcf9;
+    border-radius: 18px;
+    padding: 40px 40px 20px;
+    background: transparent;
+}
+
+.offerings-card ul {
+    list-style: none;
+}
+
+.offerings-card li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #344767;
+    margin-bottom: 10px;
+}
+
+.offerings-card li strong {
+    font-weight: 700;
+}
+
+.offerings-card i {
+    color: #34a853;
+    font-size: 16px;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+/* Responsive */
+
+@media (max-width: 992px) {
+
+    .offerings-container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .offerings-section h2 {
+        font-size: 42px;
+    }
+
+    .offerings-card {
+        padding: 30px;
+    }
+}
+
+
+
+/* FOOTER SECTION CSS */
+.footer {
+    background: #35245b;
+    color: #fff;
+    padding-top: 60px;
+}
+
+.footer-container {
+    width: 70%;
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.footer-logo {
+    width: 160px;
+    margin-bottom: 25px;
+}
+
+.contact-item {
+    margin-bottom: 22px;
+}
+
+.contact-item strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.contact-item p {
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.footer-col h3 {
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 14px;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+}
+
+.newsletter {
+    margin-top: 15px;
+}
+
+.newsletter input {
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 4px;
+    padding: 0 15px;
+}
+
+.newsletter button {
+    margin-top: 10px;
+    background: #f5ae32;
+    border: none;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.social-heading {
+    margin-top: 35px;
+}
+
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.social-icons a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    width: 70%;
+    max-width: 1300px;
+    margin: 60px auto 0;
+
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/* ==========================================
+   ADDITIONAL RESPONSIVENESS OVERRIDES
+   ========================================== */
+
+/* Tablet & Mobile (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .hero-container {
+        width: 90%;
+        gap: 50px;
+    }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+
+    /* Navbar styling */
+    .container {
+        justify-content: space-between;
+        padding: 0 20px;
+        height: 75px;
+        position: relative;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Hamburger active animation */
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 10px 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        width: 100%;
+    }
+
+    .nav-links li a:hover {
+        background-color: #f1ecf7;
+        color: #86357a;
+    }
+
+    /* Hero section */
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .hero-content h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .highlight {
+        font-size: 22px;
+        line-height: 1.3;
+        text-align: center;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    .hero-content img {
+        margin: 20px auto;
+    }
+
+    .subscribe-btn {
+        display: block;
+        margin: 0 auto;
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+
+    /* Features section wrapping */
+    .features-section {
+        margin-top: 0;
+        padding: 40px 0;
+    }
+
+    .features-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        width: 95%;
+    }
+
+    /* Why CPA section */
+    .why-cpa h2 {
+        font-size: 2rem;
+        margin-bottom: 50px;
+    }
+
+    .why-card {
+        min-height: auto;
+        padding-bottom: 20px;
+    }
+
+    /* Career section */
+    .career-section h2 {
+        font-size: 2rem;
+    }
+
+    /* Instructors section */
+    .instructors-header h2 {
+        font-size: 2rem;
+    }
+
+    .instructors-header p {
+        font-size: 1.1rem;
+    }
+
+    .instructors-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 20px;
+    }
+
+    .instructors-grid img {
+        width: 100%;
+        max-width: 370px;
+        height: auto;
+    }
+
+    /* Eligibility section */
+    .eligibility-section {
+        padding: 60px 15px;
+    }
+
+    .eligibility-container h2 {
+        font-size: 2rem;
+    }
+
+    /* Footer adjustments */
+    .footer-container {
+        width: 70%;
+        max-width: 1300px;
+        /* margin: auto; */
+        display: flex;
+        justify-content: space-between;
+        /* align-items: flex-start; */
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo {
+        margin: 0 auto 25px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        width: 90%;
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* Small Screen Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .hero-container {
+        width: 95%;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content h2 {
+        font-size: 20px;
+    }
+
+    .highlight {
+        font-size: 18px;
+    }
+
+    .hero-form {
+        padding: 25px 15px;
+    }
+
+    .hero-form h2 {
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+    }
+
+    .select-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Why CPA cards details */
+    .why-card-description {
+        padding: 0 20px;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+
+    /* Offerings cards */
+    .offerings-card {
+        padding: 25px 15px;
+    }
+
+    /* Exam summary styling */
+    .exam-summary {
+        width: 100%;
+        max-width: 320px;
+        padding: 15px 20px;
+    }
+
+    .exam-summary h3 {
+        font-size: 18px;
+    }
+
+    .exam-summary p {
+        font-size: 16px;
+    }
+
+    .exam-summary small {
+        font-size: 14px;
+    }
+}
+
+/* Very Small Mobile Screens (max-width: 360px) */
+@media (max-width: 360px) {
+    .hero-content h1 {
+        font-size: 24px;
+    }
+
+    .hero-content h2 {
+        font-size: 18px;
+    }
+
+    .highlight {
+        font-size: 16px;
+    }
+
+    .cpa-card {
+        padding: 10px 8px;
+    }
+
+    .cpa-card-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .exam-card {
+        padding: 8px;
+    }
+
+    .card-footer span {
+        font-size: 10px;
+        padding: 8px 4px;
+    }
+}
+
+/* ==========================================
+   SOCIAL MEDIA FOOTER BOX
+   ========================================== */
+.follow-us-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 15px;
+}
+
+.social-heading-title {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-family: "Inter", sans-serif;
+}
+
+.social-icons-container {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.social-icon-box {
+    color: #ffffff;
+    font-size: 32px;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon-box:hover {
+    transform: scale(1.15);
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .follow-us-col {
+        padding-top: 0;
+        align-items: center;
+    }
+}
+
+/* Custom Loader & Dialog Styles */
+.custom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.custom-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.loader-container {
+    background: #fff;
+    padding: 35px 45px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(132, 87, 231, 0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 320px;
+    text-align: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3edff;
+    border-top: 5px solid #8457e7;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+#loader-message {
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.dialog-box {
+    background: #fff;
+    padding: 35px 30px;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    transform: scale(0.85);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-overlay.active .dialog-box {
+    transform: scale(1);
+}
+
+.dialog-icon-container {
+    margin-bottom: 20px;
+}
+
+.dialog-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.dialog-icon.success-icon {
+    background: #e6f7ed;
+    color: #26b467;
+}
+
+.dialog-icon.success-icon::before {
+    content: "✓";
+}
+
+.dialog-icon.error-icon {
+    background: #fdf2f2;
+    color: #f05252;
+}
+
+.dialog-icon.error-icon::before {
+    content: "✗";
+}
+
+#dialog-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+#dialog-message {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.dialog-btn {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 30px;
+    background: #8457e7;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 12px rgba(132, 87, 231, 0.2);
+}
+
+.dialog-btn:hover {
+    background: #7146ce;
+}
+
+.dialog-btn:active {
+    transform: scale(0.98);
+}
