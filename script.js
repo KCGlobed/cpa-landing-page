@@ -127,13 +127,14 @@ if (dialogCloseBtn) {
 }
 
 // Function to call CPA create_payment API
-const reportPaymentStatus = async ({ orderId, paymentId, signature, amount, status, responseJson, lid }) => {
+const reportPaymentStatus = async ({ orderId, paymentId, signature, amount, duration, status, responseJson, lid }) => {
     try {
         const payload = {
             razorpay_order_id: orderId || "",
             razorpay_payment_id: paymentId || "",
             razorpay_signature: signature || "",
             amount: amount || "1.00",
+            duration: duration ,
             currency: RAZORPAY_CONFIG.CURRENCY,
             status: status, // "initiated", "success", "failed"
             response: JSON.stringify(responseJson || {}),
@@ -158,18 +159,286 @@ const reportPaymentStatus = async ({ orderId, paymentId, signature, amount, stat
     }
 };
 
+const injectPlanModalStyles = () => {
+    if (document.getElementById('plan-modal-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'plan-modal-styles';
+    style.textContent = `
+    .plan-modal-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        font-family: "Inter", sans-serif;
+    }
+    .plan-modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    .plan-modal {
+        background: #fafafa;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 500px;
+        padding: 30px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+        text-align: left;
+        position: relative;
+    }
+    .plan-modal-overlay.active .plan-modal {
+        transform: translateY(0);
+    }
+    .plan-modal-close {
+        position: absolute;
+        top: 15px; right: 15px;
+        background: transparent;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #999;
+        transition: color 0.2s;
+    }
+    .plan-modal-close:hover {
+        color: #333;
+    }
+    .plan-modal h2 {
+        font-size: 22px;
+        color: #111;
+        margin-top: 0;
+        margin-bottom: 24px;
+        font-weight: 700;
+    }
+    .plan-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .plan-card {
+        display: flex;
+        align-items: center;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: #fff;
+        position: relative;
+    }
+    .plan-card.selected {
+        border: 2px solid #8457e7;
+    }
+    .plan-card-checkbox {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 2px solid #d1d5db;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 16px;
+        transition: all 0.2s ease;
+    }
+    .plan-card-checkbox svg {
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: #d1d5db;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    .plan-card.selected .plan-card-checkbox {
+        background: #10b981;
+        border-color: #10b981;
+    }
+    .plan-card.selected .plan-card-checkbox svg {
+        stroke: #fff;
+    }
+    .plan-card-content {
+        flex: 1;
+    }
+    .plan-card-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 4px;
+    }
+    .plan-card-breakdown {
+        font-size: 14px;
+        color: #6b7280;
+    }
+    .plan-card-badge {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        border: 1px solid #8457e7;
+        color: #8457e7;
+        background: #fff;
+        transition: all 0.2s ease;
+    }
+    .plan-card.selected .plan-card-badge {
+        background: #10b981;
+        color: #fff;
+        border-color: #10b981;
+    }
+    .plan-modal-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+    }
+    .plan-modal-total-label {
+        font-size: 18px;
+        font-weight: 600;
+        color: #111;
+    }
+    .plan-modal-total-price {
+        font-size: 28px;
+        font-weight: 800;
+        color: #111;
+    }
+    .plan-modal-submit-btn {
+        background: #8457e7;
+        color: #fff;
+        border: none;
+        padding: 14px 24px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 24px;
+        transition: background 0.3s ease;
+    }
+    .plan-modal-submit-btn:hover {
+        background: #6e44c5;
+    }
+    `;
+    document.head.appendChild(style);
+};
+
+const createPlanModal = () => {
+    injectPlanModalStyles();
+    const existingOverlay = document.getElementById('plan-modal-overlay');
+    if (existingOverlay) {
+        existingOverlay.remove();
+    }
+
+    const overlay = document.createElement('div');
+    overlay.className = 'plan-modal-overlay';
+    overlay.id = 'plan-modal-overlay';
+
+    overlay.innerHTML = `
+        <div class="plan-modal">
+            <button class="plan-modal-close" id="plan-modal-close">&times;</button>
+            <h2>Select Your Learning Plan</h2>
+            <div class="plan-cards">
+                <div class="plan-card selected" data-amount="59000" data-duration="31536000">
+                    <div class="plan-card-checkbox">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <div class="plan-card-content">
+                        <div class="plan-card-title">1 Year Plan</div>
+                        <div class="plan-card-breakdown">₹50,000 + 18% GST (₹9,000)</div>
+                    </div>
+                    <div class="plan-card-badge">SAVE 33%</div>
+                </div>
+                
+                <div class="plan-card" data-amount="94400" data-duration="63072000">
+                    <div class="plan-card-checkbox">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <div class="plan-card-content">
+                        <div class="plan-card-title">2 Year Plan</div>
+                        <div class="plan-card-breakdown">₹80,000 + 18% GST (₹14,400)</div>
+                    </div>
+                    <div class="plan-card-badge">SAVE 44%</div>
+                </div>
+            </div>
+
+            <div class="plan-modal-footer">
+                <div class="plan-modal-total-label">Total</div>
+                <div class="plan-modal-total-price" id="plan-modal-total">₹59,000</div>
+            </div>
+            
+            <button class="plan-modal-submit-btn" id="plan-modal-proceed">Proceed to Payment</button>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+};
+
+const showPlanModal = (onSelectCallback, onCancelCallback) => {
+    createPlanModal();
+    const overlay = document.getElementById('plan-modal-overlay');
+    
+    const closeBtn = document.getElementById('plan-modal-close');
+    const cards = document.querySelectorAll('.plan-card');
+    const totalEl = document.getElementById('plan-modal-total');
+    const proceedBtn = document.getElementById('plan-modal-proceed');
+    
+    let selectedAmount = "59000";
+    let selectedDuration = "31536000";
+
+    const hideModal = () => {
+        overlay.classList.remove('active');
+    };
+
+    closeBtn.onclick = () => {
+        hideModal();
+        if (onCancelCallback) onCancelCallback();
+    };
+
+    cards.forEach(card => {
+        card.onclick = () => {
+            cards.forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            
+            selectedAmount = card.getAttribute('data-amount');
+            selectedDuration = card.getAttribute('data-duration');
+            
+            const formatted = new Intl.NumberFormat('en-IN').format(selectedAmount);
+            totalEl.textContent = '₹' + formatted;
+        };
+    });
+
+    proceedBtn.onclick = () => {
+        hideModal();
+        if (onSelectCallback) onSelectCallback(selectedAmount, selectedDuration);
+    };
+
+    setTimeout(() => overlay.classList.add('active'), 10);
+};
+
 const leadForm = document.getElementById('lead-form');
 
 if (leadForm) {
     leadForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        const isEA = window.location.pathname.toLowerCase().includes('ea');
+
         const formData = {
             full_name: document.getElementById('lead-name').value,
             email: document.getElementById('lead-email').value,
             phone: document.getElementById('lead-phone').value,
             state: document.getElementById('lead-state').value,
-            city: document.getElementById('lead-city').value
+            city: document.getElementById('lead-city').value,
+            source_form: isEA ? 2 : 1
         };
 
         const submitButton = leadForm.querySelector('button[type="submit"]');
@@ -214,82 +483,56 @@ if (leadForm) {
             document.querySelector('.select-city').innerHTML =
                 '<option value="">Select City</option>';
 
-            // Step 2: Report Initiated Status to CPA backend
-            showLoader('Initiating Payment...');
-            
-            await reportPaymentStatus({
-                orderId: "",
-                paymentId: "",
-                signature: "",
-                amount: RAZORPAY_CONFIG.AMOUNT,
-                status: 'initiated',
-                responseJson: { 
-                    message: "Payment checkout opened",
-                    name: formData.full_name,
-                    email: formData.email,
-                    phone: formData.phone,
-                    state: formData.state,
-                    city: formData.city
-                },
-                lid: lid
-            });
+            hideLoader();
 
-            // Step 3: Open Razorpay Checkout Modal
-            const 
-            amountInPaise = Math.round(parseFloat(RAZORPAY_CONFIG.AMOUNT) * 100);
+            // Show Plan Selection Modal
+            showPlanModal(async (selectedAmount, selectedDuration) => {
+                showLoader('Initiating Payment...');
+                
+                await reportPaymentStatus({
+                    orderId: "",
+                    paymentId: "",
+                    signature: "",
+                    amount: selectedAmount,
+                    duration: selectedDuration,
+                    status: 'initiated',
+                    responseJson: { 
+                        message: "Payment checkout opened",
+                        name: formData.full_name,
+                        email: formData.email,
+                        phone: formData.phone,
+                        state: formData.state,
+                        city: formData.city
+                    },
+                    lid: lid
+                });
 
-            const options = {
-                key: RAZORPAY_CONFIG.KEY_ID,
-                amount: amountInPaise,
-                currency: RAZORPAY_CONFIG.CURRENCY,
-                name: 'KC GlobEd',
-                description: 'CPA Course Registration Fee',
-                prefill: {
-                    name: formData.full_name,
-                    email: formData.email,
-                    contact: formData.phone
-                },
-                handler: async function (rzpResponse) {
-                    hideLoader();
-                    showLoader('Verifying Payment...');
-                    
-                    // Step 4: Report Successful Payment to CPA backend
-                    await reportPaymentStatus({
-                        orderId: rzpResponse.razorpay_order_id || "",
-                        paymentId: rzpResponse.razorpay_payment_id || "",
-                        signature: rzpResponse.razorpay_signature || "",
-                        amount: RAZORPAY_CONFIG.AMOUNT,
-                        status: 'success',
-                        responseJson: {
-                            ...rzpResponse,
-                            name: formData.full_name,
-                            email: formData.email,
-                            phone: formData.phone,
-                            state: formData.state,
-                            city: formData.city
-                        },
-                        lid: lid
-                    });
+                const amountInPaise = Math.round(parseFloat(selectedAmount) * 100);
 
-                    hideLoader();
-                    showDialog('success', 'Thank You!', 'Payment Successful! Thank you for registering.');
-                    submitButton.disabled = false;
-                },
-                modal: {
-                    ondismiss: async function () {
+                const options = {
+                    key: RAZORPAY_CONFIG.KEY_ID,
+                    amount: amountInPaise,
+                    currency: RAZORPAY_CONFIG.CURRENCY,
+                    name: 'KC GlobEd',
+                    description: 'Course Registration Fee',
+                    prefill: {
+                        name: formData.full_name,
+                        email: formData.email,
+                        contact: formData.phone
+                    },
+                    handler: async function (rzpResponse) {
                         hideLoader();
-                        showLoader('Cancelling Payment...');
+                        showLoader('Verifying Payment...');
                         
-                        // Step 5: Report Cancelled/Failed Payment to CPA backend
                         await reportPaymentStatus({
-                            orderId: "",
-                            paymentId: "",
-                            signature: "",
-                            amount: RAZORPAY_CONFIG.AMOUNT,
-                            status: 'failed',
-                            responseJson: { 
-                                error: "User dismissed payment modal",
-                                reason: "The user manually closed the Razorpay popup interface before completion.",
+                            orderId: rzpResponse.razorpay_order_id || "",
+                            paymentId: rzpResponse.razorpay_payment_id || "",
+                            signature: rzpResponse.razorpay_signature || "",
+                            amount: selectedAmount,
+                            duration: selectedDuration,
+                            status: 'success',
+                            responseJson: {
+                                ...rzpResponse,
                                 name: formData.full_name,
                                 email: formData.email,
                                 phone: formData.phone,
@@ -298,20 +541,54 @@ if (leadForm) {
                             },
                             lid: lid
                         });
-                        
-                        hideLoader();
-                        showDialog('error', 'Payment Cancelled', 'The payment session was closed or cancelled.');
-                        submitButton.disabled = false;
-                    }
-                },
-                theme: {
-                    color: '#8457e7'
-                }
-            };
 
-            hideLoader(); // Hide the loader before Razorpay opens its own checkout UI
-            const rzp = new Razorpay(options);
-            rzp.open();
+                        hideLoader();
+                        showDialog('success', 'Thank You!', 'Payment Successful! Thank you for registering.');
+                        submitButton.disabled = false;
+                    },
+                    modal: {
+                        ondismiss: async function () {
+                            hideLoader();
+                            showLoader('Cancelling Payment...');
+                            
+                            await reportPaymentStatus({
+                                orderId: "",
+                                paymentId: "",
+                                signature: "",
+                                amount: selectedAmount,
+                                duration: selectedDuration,
+                                status: 'failed',
+                                responseJson: { 
+                                    error: "User dismissed payment modal",
+                                    reason: "The user manually closed the Razorpay popup interface before completion.",
+                                    name: formData.full_name,
+                                    email: formData.email,
+                                    phone: formData.phone,
+                                    state: formData.state,
+                                    city: formData.city
+                                },
+                                lid: lid
+                            });
+                            
+                            hideLoader();
+                            showDialog('error', 'Payment Cancelled', 'The payment session was closed or cancelled.');
+                            submitButton.disabled = false;
+                        }
+                    },
+                    theme: {
+                        color: '#8457e7'
+                    }
+                };
+
+                hideLoader(); 
+                const rzp = new Razorpay(options);
+                rzp.open();
+
+            }, () => {
+                // Modal cancelled by user
+                showDialog('error', 'Plan Not Selected', 'You must select a plan to proceed with the registration.');
+                submitButton.disabled = false;
+            });
 
         } catch (error) {
             console.error('Razorpay checkout error:', error);
