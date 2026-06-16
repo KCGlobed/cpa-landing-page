@@ -85,7 +85,9 @@
 
                     <input type="email" id="lead-email" placeholder="Enter Your Email Address" required>
 
-                    <input type="tel" id="lead-phone" placeholder="Enter Your Mobile Number" required>
+                    <input type="text" id="lead-phone" placeholder="Enter Your Mobile Number" maxlength="10"
+                        pattern="[0-9]{10}" inputmode="numeric"
+                        oninput="this.value = this.value.replace(/\D/g, '').slice(0,10)" required>
 
                     <div class="select-row">
 
