@@ -356,7 +356,6 @@ const createPlanModal = () => {
                         <div class="plan-card-title">1 Year Plan</div>
                         <div class="plan-card-breakdown">₹50,000 + 18% GST (₹9,000)</div>
                     </div>
-                    <div class="plan-card-badge">SAVE 33%</div>
                 </div>
                 
                 <div class="plan-card" data-amount="94400" data-duration="63072000">
@@ -367,7 +366,6 @@ const createPlanModal = () => {
                         <div class="plan-card-title">2 Year Plan</div>
                         <div class="plan-card-breakdown">₹80,000 + 18% GST (₹14,400)</div>
                     </div>
-                    <div class="plan-card-badge">SAVE 44%</div>
                 </div>
             </div>
 
