@@ -235,7 +235,8 @@ if (leadForm) {
             });
 
             // Step 3: Open Razorpay Checkout Modal
-            const amountInPaise = Math.round(parseFloat(RAZORPAY_CONFIG.AMOUNT) * 100);
+            const 
+            amountInPaise = Math.round(parseFloat(RAZORPAY_CONFIG.AMOUNT) * 100);
 
             const options = {
                 key: RAZORPAY_CONFIG.KEY_ID,
