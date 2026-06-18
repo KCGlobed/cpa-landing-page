@@ -353,14 +353,14 @@ const createPlanModal = () => {
     overlay.innerHTML = `
         <div class="plan-modal">
             <button class="plan-modal-close" id="plan-modal-close">&times;</button>
-            <h2>Select Your Learning Plan</h2>
+            <h2>Select Your Subscription Plan</h2>
             <div class="plan-cards">
                 <div class="plan-card selected" data-amount="59000" data-duration="31536000">
                     <div class="plan-card-checkbox">
                         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     </div>
                     <div class="plan-card-content">
-                        <div class="plan-card-title">1 Year Plan</div>
+                        <div class="plan-card-title">1 Year Subscription</div>
                         <div class="plan-card-breakdown">₹50,000 + 18% GST (₹9,000)</div>
                     </div>
                 </div>
@@ -370,7 +370,7 @@ const createPlanModal = () => {
                         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     </div>
                     <div class="plan-card-content">
-                        <div class="plan-card-title">2 Year Plan</div>
+                        <div class="plan-card-title">2 Year Subscription</div>
                         <div class="plan-card-breakdown">₹80,000 + 18% GST (₹14,400)</div>
                     </div>
                 </div>
