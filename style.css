@@ -1003,6 +1003,7 @@ body {
     line-height: 1.7;
     color: #344767;
     margin-bottom: 10px;
+    font-weight: 100;
 }
 
 .offerings-card li strong {
