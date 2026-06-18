@@ -1154,28 +1154,7 @@
                             </div>
                         </div>
                         <div>
-                            <div class="bg-watch-demo py-10 pb-20 bg-center bg-no-repeat bg-cover"
-                                style="background-image:url(https://storage.googleapis.com/static_files_backend/media/landing/watch_demo.aee20fdb.png">
-                                <div class=" flex flex-col items-center">
-                                    <div class="relative overflow-hidden">
-                                        <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10">
-                                            <div class="max-w-3xl text-center mx-auto">
-                                                <h2
-                                                    class="block text-3xl font-regular text-white sm:text-3xl md:text-4xl ">
-                                                    Get the Passport to your Success!</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex">
-                                        <div tabindex="0"><a href="/cpa"
-                                                class="mr-4 transition duration-300 rounded-3xl border hover:border-0 border-white px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary cursor-pointer">
-                                                US CPA</a></div>
-                                        <div tabindex="0"><a href="/ea"
-                                                class="transition mr-4 duration-300 rounded-3xl bg-transparent border border-gray-700 text-white px-6 py-2.5 text-sm font-semibold text-gray-700 shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary cursor-pointer">
-                                                US Taxation</a></div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                         <div>
                             <div class="bg-[#E1E7EA] px-5 py-10 lg:p-10">
@@ -1198,6 +1177,28 @@
                                                 style:"max-width:100%;height:auto">
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-watch-demo py-10 pb-20 bg-center bg-no-repeat bg-cover"
+                            style="background-image:url(https://storage.googleapis.com/static_files_backend/media/landing/watch_demo.aee20fdb.png">
+                            <div class=" flex flex-col items-center">
+                                <div class="relative overflow-hidden">
+                                    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                                        <div class="max-w-3xl text-center mx-auto">
+                                            <h2 class="block text-3xl font-regular text-white sm:text-3xl md:text-4xl ">
+                                                Get the Passport to your Success!</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <div tabindex="0"><a href="/cpa"
+                                            class="mr-4 transition duration-300 rounded-3xl border hover:border-0 border-white px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary cursor-pointer">
+                                            US CPA</a></div>
+                                    <div tabindex="0"><a href="/ea"
+                                            class="transition mr-4 duration-300 rounded-3xl bg-transparent border border-gray-700 text-white px-6 py-2.5 text-sm font-semibold text-gray-700 shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary cursor-pointer">
+                                            US Taxation</a></div>
                                 </div>
                             </div>
                         </div>
@@ -1589,7 +1590,8 @@
                                         <!-- Testimonials Wrapper -->
                                         <div class="mb-10 mt-8">
                                             <!-- Student Tab Content (6 Cards, Sliding) -->
-                                            <div id="tab-content-student" class="tab-content overflow-hidden w-full max-w-[70rem] mx-auto px-4 sm:px-6">
+                                            <div id="tab-content-student"
+                                                class="tab-content overflow-hidden w-full max-w-[70rem] mx-auto px-4 sm:px-6">
                                                 <div class="testimonial-slider-container w-full overflow-visible">
                                                     <div
                                                         class="testimonial-slider-track flex gap-4 transition-transform duration-500 ease-in-out">
@@ -1602,7 +1604,8 @@
                                             </div>
 
                                             <!-- Corporate Tab Content (6 Cards, Sliding) -->
-                                            <div id="tab-content-corporate" class="tab-content hidden overflow-hidden w-full max-w-[70rem] mx-auto px-4 sm:px-6">
+                                            <div id="tab-content-corporate"
+                                                class="tab-content hidden overflow-hidden w-full max-w-[70rem] mx-auto px-4 sm:px-6">
                                                 <div class="testimonial-slider-container w-full overflow-visible">
                                                     <div
                                                         class="testimonial-slider-track flex gap-4 transition-transform duration-500 ease-in-out">
@@ -1613,7 +1616,8 @@
                                             </div>
 
                                             <!-- Institution Tab Content (6 Cards, Sliding) -->
-                                            <div id="tab-content-institution" class="tab-content hidden overflow-hidden w-full max-w-[70rem] mx-auto px-4 sm:px-6">
+                                            <div id="tab-content-institution"
+                                                class="tab-content hidden overflow-hidden w-full max-w-[70rem] mx-auto px-4 sm:px-6">
                                                 <div class="testimonial-slider-container w-full overflow-visible">
                                                     <div
                                                         class="testimonial-slider-track flex gap-4 transition-transform duration-500 ease-in-out">
@@ -2012,7 +2016,7 @@
                 this.bgColor = bgColor;
                 this.currentSlideIndex = 0;
                 this.slideInterval = null;
-                
+
                 this.renderCards(categoryData);
 
                 this.cards = this.track ? this.track.querySelectorAll('.testiSlider') : [];
@@ -2138,7 +2142,7 @@
             try {
                 const response = await fetch('https://backend-prod-254015706580.asia-south2.run.app/api/landing-page/get-testimonial-list/');
                 let apiData = await response.json();
-                
+
                 // Group data by type
                 const mappedData = { student: [], corporate: [], institution: [] };
                 if (Array.isArray(apiData)) {

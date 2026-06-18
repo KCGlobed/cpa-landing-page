@@ -483,11 +483,6 @@ if (leadForm) {
                 throw new Error("Form submission succeeded but no ID (lid) was returned.");
             }
 
-            // Reset Form fields
-            leadForm.reset();
-            document.querySelector('.select-city').innerHTML =
-                '<option value="">Select City</option>';
-
             hideLoader();
 
             // Show Plan Selection Modal
@@ -548,6 +543,12 @@ if (leadForm) {
                         });
 
                         hideLoader();
+                        
+                        // Reset Form fields upon successful payment
+                        leadForm.reset();
+                        document.querySelector('.select-city').innerHTML =
+                            '<option value="">Select City</option>';
+
                         showDialog('success', 'Thank You!', 'Payment Successful! Thank you for registering.');
                         submitButton.disabled = false;
                     },
