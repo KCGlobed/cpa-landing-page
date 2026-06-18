@@ -1,4 +1,3 @@
-
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const navMenu = document.getElementById('nav-menu');
 
@@ -68,7 +67,8 @@ populateStates();
 
 // --- RAZORPAY CONFIGURATION ---
 const RAZORPAY_CONFIG = {
-    KEY_ID: 'rzp_test_T1nLH080qVas7G', // Replace with your actual Razorpay Key ID
+    KEY_ID: 'rzp_live_kaycXLonITtI0t', 
+    // KEY_ID: 'rzp_test_T1nLH080qVas7G', 
     AMOUNT: '50000.00',                   // Amount in rupees
     CURRENCY: 'INR'
 };
@@ -134,16 +134,17 @@ if (dialogCloseBtn) {
 }
 
 // Function to call CPA create_payment API
-const reportPaymentStatus = async ({ orderId, paymentId, signature, amount, duration, status, responseJson, lid }) => {
+const reportPaymentStatus = async ({ orderId, paymentId, signature, amount, duration, status, method, responseJson, lid }) => {
     try {
         const payload = {
             razorpay_order_id: orderId || "",
             razorpay_payment_id: paymentId || "",
             razorpay_signature: signature || "",
-            amount: amount || "1.00",
+            amount: amount ,
             duration: duration,
             currency: RAZORPAY_CONFIG.CURRENCY,
             status: status, // "initiated", "success", "failed"
+            payment_method: method || "", // "upi", "card", "netbanking", "wallet", etc.
             response: JSON.stringify(responseJson || {}),
             lid: String(lid)
         };
@@ -489,6 +490,9 @@ if (leadForm) {
             showPlanModal(async (selectedAmount, selectedDuration) => {
                 showLoader('Initiating Payment...');
 
+                // NOTE: orderId is empty here because no Razorpay order has been
+                // created yet at this point (checkout opens without a server-side
+                // order_id). If you add an order-creation step, pass that id here.
                 await reportPaymentStatus({
                     orderId: "",
                     paymentId: "",
@@ -496,6 +500,7 @@ if (leadForm) {
                     amount: selectedAmount,
                     duration: selectedDuration,
                     status: 'initiated',
+                    method: "",
                     responseJson: {
                         message: "Payment checkout opened",
                         name: formData.full_name,
@@ -524,6 +529,14 @@ if (leadForm) {
                         hideLoader();
                         showLoader('Verifying Payment...');
 
+                        // NOTE: Razorpay's checkout `handler` callback does not
+                        // return the payment method (upi/card/netbanking/wallet).
+                        // razorpay_order_id is also only present if you created
+                        // the order server-side and passed options.order_id above.
+                        // For the authoritative method/order details, fetch the
+                        // payment from Razorpay's Payments API
+                        // (GET /v1/payments/:id) on your backend using
+                        // razorpay_payment_id, and store that against this lid.
                         await reportPaymentStatus({
                             orderId: rzpResponse.razorpay_order_id || "",
                             paymentId: rzpResponse.razorpay_payment_id || "",
@@ -531,6 +544,7 @@ if (leadForm) {
                             amount: selectedAmount,
                             duration: selectedDuration,
                             status: 'success',
+                            method: rzpResponse.method || "",
                             responseJson: {
                                 ...rzpResponse,
                                 name: formData.full_name,
@@ -543,7 +557,7 @@ if (leadForm) {
                         });
 
                         hideLoader();
-                        
+
                         // Reset Form fields upon successful payment
                         leadForm.reset();
                         document.querySelector('.select-city').innerHTML =
@@ -558,12 +572,13 @@ if (leadForm) {
                             showLoader('Cancelling Payment...');
 
                             await reportPaymentStatus({
-                                orderId: "",
+                                orderId: options.order_id || "",
                                 paymentId: "",
                                 signature: "",
                                 amount: selectedAmount,
                                 duration: selectedDuration,
                                 status: 'failed',
+                                method: "",
                                 responseJson: {
                                     error: "User dismissed payment modal",
                                     reason: "The user manually closed the Razorpay popup interface before completion.",
@@ -588,6 +603,42 @@ if (leadForm) {
 
                 hideLoader();
                 const rzp = new Razorpay(options);
+
+                // Catches failed payment attempts (e.g. card declined) that
+                // happen *before* the user dismisses the modal. Razorpay's
+                // payment.failed event gives richer error metadata, including
+                // order/payment ids and (in most cases) the method attempted.
+                rzp.on('payment.failed', async function (failResponse) {
+                    const err = failResponse.error || {};
+                    const metadata = err.metadata || {};
+
+                    hideLoader();
+                    showLoader('Recording Failed Payment...');
+
+                    await reportPaymentStatus({
+                        orderId: metadata.order_id || options.order_id || "",
+                        paymentId: metadata.payment_id || "",
+                        signature: "",
+                        amount: selectedAmount,
+                        duration: selectedDuration,
+                        status: 'failed',
+                        method: err.method || "",
+                        responseJson: {
+                            error: err,
+                            name: formData.full_name,
+                            email: formData.email,
+                            phone: formData.phone,
+                            state: formData.state,
+                            city: formData.city
+                        },
+                        lid: lid
+                    });
+
+                    hideLoader();
+                    showDialog('error', 'Payment Failed', err.description || 'Your payment could not be processed. Please try again.');
+                    submitButton.disabled = false;
+                });
+
                 rzp.open();
 
             }, () => {
