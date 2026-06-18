@@ -2,6 +2,13 @@
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const navMenu = document.getElementById('nav-menu');
 
+document.getElementById("subscribeBtn").addEventListener("click", () => {
+    document.getElementById("enquiry-form").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+});
+
 if (hamburgerBtn && navMenu) {
     hamburgerBtn.addEventListener('click', () => {
         hamburgerBtn.classList.toggle('active');
@@ -104,10 +111,10 @@ const showDialog = (type, title, message) => {
     } else {
         dialogIcon.classList.add('error-icon');
     }
-    
+
     dialogTitle.textContent = title;
     dialogMessage.textContent = message;
-    
+
     dialogOverlay.style.display = 'flex';
     setTimeout(() => {
         dialogOverlay.classList.add('active');
@@ -134,7 +141,7 @@ const reportPaymentStatus = async ({ orderId, paymentId, signature, amount, dura
             razorpay_payment_id: paymentId || "",
             razorpay_signature: signature || "",
             amount: amount || "1.00",
-            duration: duration ,
+            duration: duration,
             currency: RAZORPAY_CONFIG.CURRENCY,
             status: status, // "initiated", "success", "failed"
             response: JSON.stringify(responseJson || {}),
@@ -383,12 +390,12 @@ const createPlanModal = () => {
 const showPlanModal = (onSelectCallback, onCancelCallback) => {
     createPlanModal();
     const overlay = document.getElementById('plan-modal-overlay');
-    
+
     const closeBtn = document.getElementById('plan-modal-close');
     const cards = document.querySelectorAll('.plan-card');
     const totalEl = document.getElementById('plan-modal-total');
     const proceedBtn = document.getElementById('plan-modal-proceed');
-    
+
     let selectedAmount = "59000";
     let selectedDuration = "31536000";
 
@@ -405,10 +412,10 @@ const showPlanModal = (onSelectCallback, onCancelCallback) => {
         card.onclick = () => {
             cards.forEach(c => c.classList.remove('selected'));
             card.classList.add('selected');
-            
+
             selectedAmount = card.getAttribute('data-amount');
             selectedDuration = card.getAttribute('data-duration');
-            
+
             const formatted = new Intl.NumberFormat('en-IN').format(selectedAmount);
             totalEl.textContent = '₹' + formatted;
         };
@@ -467,11 +474,11 @@ if (leadForm) {
             }
 
             // Extract form id (lid)
-            const lid = (data.data && Array.isArray(data.data) && data.data[0] && data.data[0].lid) 
-                || data.id 
-                || (data.data && data.data.id) 
+            const lid = (data.data && Array.isArray(data.data) && data.data[0] && data.data[0].lid)
+                || data.id
+                || (data.data && data.data.id)
                 || data.lid;
-            
+
             if (!lid) {
                 throw new Error("Form submission succeeded but no ID (lid) was returned.");
             }
@@ -486,7 +493,7 @@ if (leadForm) {
             // Show Plan Selection Modal
             showPlanModal(async (selectedAmount, selectedDuration) => {
                 showLoader('Initiating Payment...');
-                
+
                 await reportPaymentStatus({
                     orderId: "",
                     paymentId: "",
@@ -494,7 +501,7 @@ if (leadForm) {
                     amount: selectedAmount,
                     duration: selectedDuration,
                     status: 'initiated',
-                    responseJson: { 
+                    responseJson: {
                         message: "Payment checkout opened",
                         name: formData.full_name,
                         email: formData.email,
@@ -521,7 +528,7 @@ if (leadForm) {
                     handler: async function (rzpResponse) {
                         hideLoader();
                         showLoader('Verifying Payment...');
-                        
+
                         await reportPaymentStatus({
                             orderId: rzpResponse.razorpay_order_id || "",
                             paymentId: rzpResponse.razorpay_payment_id || "",
@@ -548,7 +555,7 @@ if (leadForm) {
                         ondismiss: async function () {
                             hideLoader();
                             showLoader('Cancelling Payment...');
-                            
+
                             await reportPaymentStatus({
                                 orderId: "",
                                 paymentId: "",
@@ -556,7 +563,7 @@ if (leadForm) {
                                 amount: selectedAmount,
                                 duration: selectedDuration,
                                 status: 'failed',
-                                responseJson: { 
+                                responseJson: {
                                     error: "User dismissed payment modal",
                                     reason: "The user manually closed the Razorpay popup interface before completion.",
                                     name: formData.full_name,
@@ -567,7 +574,7 @@ if (leadForm) {
                                 },
                                 lid: lid
                             });
-                            
+
                             hideLoader();
                             showDialog('error', 'Payment Cancelled', 'The payment session was closed or cancelled.');
                             submitButton.disabled = false;
@@ -578,7 +585,7 @@ if (leadForm) {
                     }
                 };
 
-                hideLoader(); 
+                hideLoader();
                 const rzp = new Razorpay(options);
                 rzp.open();
 
