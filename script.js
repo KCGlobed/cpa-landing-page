@@ -67,8 +67,8 @@ populateStates();
 
 // --- RAZORPAY CONFIGURATION ---
 const RAZORPAY_CONFIG = {
-    // KEY_ID: 'rzp_live_kaycXLonITtI0t', 
-    KEY_ID: 'rzp_test_T1nLH080qVas7G', 
+    KEY_ID: 'rzp_live_kaycXLonITtI0t', 
+    // KEY_ID: 'rzp_test_T1nLH080qVas7G', 
     AMOUNT: '50000.00',                   // Amount in rupees
     CURRENCY: 'INR'
 };
