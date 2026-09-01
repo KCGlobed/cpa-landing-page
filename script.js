@@ -74,8 +74,8 @@ const RAZORPAY_CONFIG = {
 };
 
 const CPA_API_CONFIG = {
-    BASE_URL: 'https://cpa-prod-738131651355.asia-south1.run.app',
-    CREATE_PAYMENT_URL: 'https://cpa-prod-738131651355.asia-south1.run.app/api/careers/create_payment/'
+    BASE_URL: 'https://cpa-backend.kcglobed.com',
+    CREATE_PAYMENT_URL: 'https://cpa-backend.kcglobed.com/api/careers/create_payment/'
 };
 
 // --- CUSTOM LOADER & POPUP HELPER FUNCTIONS ---
@@ -456,7 +456,7 @@ if (leadForm) {
         try {
             // Step 1: Submit Form to get Form ID (lid)
             const response = await fetch(
-                'https://cpa-prod-738131651355.asia-south1.run.app/api/careers/create_cpa_career_form/',
+                'https://cpa-backend.kcglobed.com/api/careers/create_cpa_career_form/',
                 {
                     method: 'POST',
                     headers: {
